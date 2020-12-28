@@ -4,25 +4,22 @@ import ReactDOM from 'react-dom';
 console.log('hello folks!');
 
 const App = () => {
-  const [input, changeInput] = useState('');
+  const [url, changeVideo] = useState('');
 
   const submitURL = () => {
-
+    console.log('im inside submitUrl!');
+    changeVideo(document.getElementById('submit-box').value);
   }
-
-  const handleOnChange = event => {
-    changeInput(event.target.value);
-    console.log(input);
-  };
 
   return (
     <>
     <div>GREETINGS FROM ME, SAM!</div>
     <div>
-      <input type='text' onChange={handleOnChange}/>
+      <input id='submit-box' type='text'/>
+      <button onClick={submitURL}>Submit</button>
     </div>
     <div>
-    <iframe width="560" height="315" src={input} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src={url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     </>
   )
