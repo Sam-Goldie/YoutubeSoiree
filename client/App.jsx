@@ -6,9 +6,13 @@ console.log('hello folks!');
 const App = () => {
   const [input, changeInput] = useState('');
 
+  const submitURL = () => {
+
+  }
+
   const handleOnChange = event => {
-    const { text, value } = event.target;
-    changeInput({ [text]: value });
+    changeInput(event.target.value);
+    console.log(input);
   };
 
   return (
@@ -18,7 +22,7 @@ const App = () => {
       <input type='text' onChange={handleOnChange}/>
     </div>
     <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/IY9YNF5MMQo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src={input} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     </>
   )
