@@ -7,19 +7,22 @@ const App = () => {
   const [url, changeVideo] = useState('');
 
   const submitURL = () => {
-    console.log('im inside submitUrl!');
-    changeVideo(document.getElementById('submit-box').value);
+    let newURL = document.getElementById('submit-box').value;
+    if (newURL.includes('watch?v=')) {
+      console.log('non embedded video detected!');
+      newURL = newURL.replace('watch?v=', 'embed/');
+    }
+    changeVideo(newURL);
   }
 
   return (
     <>
-    <div>GREETINGS FROM ME, SAM!</div>
     <div>
       <input id='submit-box' type='text'/>
       <button onClick={submitURL}>Submit</button>
     </div>
     <div>
-    <iframe width="560" height="315" src={url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src={url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
     </div>
     </>
   )
