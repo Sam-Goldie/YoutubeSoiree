@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
+
 console.log('hello folks!');
 
 const App = () => {
-  const [url, changeVideo] = useState('');
+  const [url, changeVideo] = useState('https://www.youtube.com/embed/IY9YNF5MMQo');
 
   const submitURL = () => {
     let newURL = document.getElementById('submit-box').value;
@@ -18,11 +19,10 @@ const App = () => {
   return (
     <>
     <div>
-      <input id='submit-box' type='text'/>
-      <button onClick={submitURL}>Submit</button>
-    </div>
-    <div>
     <iframe width="560" height="315" src={url} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen='true'></iframe>
+    <div id='chat-container'>
+
+    </div>
     </div>
     </>
   )
