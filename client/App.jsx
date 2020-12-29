@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
-
-console.log('hello folks!');
+import UrlSubmission from './UrlSubmission.jsx';
+import ChatContainer from './ChatContainer.jsx';
+import VideoDisplay from './VideoDisplay.jsx';
 
 const App = () => {
-  const [input, handleInput] = useState('');
+  const [url, changeVideo] = useState('https://www.youtube.com/embed/IY9YNF5MMQo');
+
+  const submitURL = () => {
+    let newURL = document.getElementById('submit-box').value;
+    if (newURL.includes('watch?v=')) {
+      newURL = newURL.replace('watch?v=', 'embed/');
+    }
+    changeVideo(newURL);
+  };
 
   return (
     <>
-    <div>GREETINGS FROM ME, SAM!</div>
-    <div>
-      <input type='text' onChange={() => handleInput(this.event.target)}></input>
-    </div>
-    <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/IY9YNF5MMQo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+      <UrlSubmission submitURL={submitURL} />
+      <VideoDisplay url={url} />
+      <ChatContainer />
     </>
-  )
-}
+  );
+};
 
 export default App;
