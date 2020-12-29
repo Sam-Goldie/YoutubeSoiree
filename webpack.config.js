@@ -4,7 +4,7 @@ module.exports = {
   entry: './client/index.jsx',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
   },
   watch: true,
   module: {
@@ -12,8 +12,8 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
-  }
-}
+        loader: 'babel-loader',
+      },
+    ],
+  },
+};

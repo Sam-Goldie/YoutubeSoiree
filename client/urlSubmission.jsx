@@ -1,10 +1,10 @@
 import React from 'react';
 
-const urlSubmission = () => {
-  return (
-    <div>
-      <input id='submit-box' type='text'/>
-      <button onClick={submitURL}>Submit</button>
-    </div>
-  )
-}
+const UrlSubmission = ({ submitURL }) => (
+  <div>
+    <input id="submit-box" type="text" />
+    <button type="submit" onClick={submitURL}>Submit</button>
+  </div>
+);
+
+export default UrlSubmission;
