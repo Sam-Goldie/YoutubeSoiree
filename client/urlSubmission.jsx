@@ -1,10 +1,15 @@
-import React from 'react';
+const React = require('react');
 
-const UrlSubmission = ({ submitURL }) => (
-  <div>
-    <input id="submit-box" type="text" />
-    <button type="submit" onClick={submitURL}>Submit</button>
-  </div>
-);
+console.log('im in urlSubmission');
 
-export default UrlSubmission;
+function UrlSubmission(props) {
+  console.log('heres props.changeVideo: ' + props.changeVideo);
+  return (
+    <div>
+      <input id="submit-box" type="text" />
+      <button type="submit" onClick={props.changeVideo}>Submit</button>
+    </div>
+  );
+}
+
+module.exports = UrlSubmission;
