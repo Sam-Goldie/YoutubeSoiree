@@ -1,26 +1,53 @@
-import React, { useState } from 'react';
-import UrlSubmission from './UrlSubmission.jsx';
-import ChatContainer from './ChatContainer.jsx';
-import VideoDisplay from './VideoDisplay.jsx';
+const React = require('react');
+// import PropTypes from 'prop-types';
+const UrlSubmission = require('./UrlSubmission.jsx');
+const ChatContainer = require('./ChatContainer.jsx');
+const VideoDisplay = require('./VideoDisplay.jsx');
 
-const App = () => {
-  const [url, changeVideo] = useState('https://www.youtube.com/embed/IY9YNF5MMQo');
+class App extends React.Component {
+  constructor() {
+    super();
 
-  const submitURL = () => {
+    this.state = {
+      url: 'https://www.youtube.com/embed/IY9YNF5MMQo',
+    };
+  }
+
+  changeVideo() {
     let newURL = document.getElementById('submit-box').value;
+    document.getElementById('submit-box').value = '';
     if (newURL.includes('watch?v=')) {
       newURL = newURL.replace('watch?v=', 'embed/');
     }
-    changeVideo(newURL);
-  };
+    if (newURL.includes('&')) {
+      newURL = newURL.substring(0, newURL.indexOf('&'));
+    }
+    console.log(`the newURL is: ${newURL}`);
+    this.setState({
+      url: newURL,
+    });
+  }
 
-  return (
-    <>
-      <UrlSubmission submitURL={submitURL} />
-      <VideoDisplay url={url} />
-      <ChatContainer />
-    </>
-  );
-};
+  // App.propTypes = {
+  //   url: PropTypes.string,
+  //   changeVideo: PropTypes.func,
+  // };
 
-export default App;
+  // App.defaultProps = {
+  //   url: 'https://www.youtube.com/embed/IY9YNF5MMQo',
+  //   changeVideo,
+  // };
+
+  render() {
+    console.log(`heres thises changeVideo: ${this.changeVideo}`);
+    return (
+      <div>
+        <UrlSubmission changeVideo={this.changeVideo.bind(this)} />
+        <VideoDisplay url={this.state.url} />
+        {/* <ChatContainer /> */}
+      </div>
+    );
+  }
+}
+
+module.exports = App;
