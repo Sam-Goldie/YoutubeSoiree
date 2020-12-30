@@ -2,6 +2,7 @@ const React = require('react');
 // import PropTypes from 'prop-types';
 const UrlSubmission = require('./UrlSubmission.jsx');
 const ChatContainer = require('./ChatContainer.jsx');
+const ChatInput = require('./ChatInput.jsx');
 const VideoDisplay = require('./VideoDisplay.jsx');
 
 class App extends React.Component {
@@ -10,6 +11,13 @@ class App extends React.Component {
 
     this.state = {
       url: 'https://www.youtube.com/embed/IY9YNF5MMQo',
+      messages: [
+        {
+          user: 'Sam Goldie',
+          body: 'hello, its me!',
+        },
+      ],
+      currentUser: 'Sam Goldie',
     };
   }
 
@@ -25,6 +33,16 @@ class App extends React.Component {
     console.log(`the newURL is: ${newURL}`);
     this.setState({
       url: newURL,
+    });
+  }
+
+  addMessage() {
+    console.log(`here is the state of messages before adding new one: ${JSON.stringify(this.state.messages)}`);
+    this.setState({
+      messages: [...this.state.messages, {
+        user: this.state.currentUser,
+        body: document.getElementById('message-input').value,
+      }],
     });
   }
 
@@ -44,7 +62,8 @@ class App extends React.Component {
       <div>
         <UrlSubmission changeVideo={this.changeVideo.bind(this)} />
         <VideoDisplay url={this.state.url} />
-        {/* <ChatContainer /> */}
+        <ChatInput addMessage={this.addMessage.bind(this)} />
+        <ChatContainer messages={this.state.messages}/>
       </div>
     );
   }
