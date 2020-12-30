@@ -41,7 +41,11 @@ class App extends React.Component {
 
   addMessage() {
     console.log(`here is the state of messages before adding new one: ${JSON.stringify(this.state.messages)}`);
-    const newMessage = document.getElementById('message-input').value;
+    const newText = document.getElementById('message-input').value;
+    const newMessage = {
+      user: this.state.currentUser,
+      body: newText,
+    };
     console.log(`heres the new message: ${newMessage}`);
     socket.emit('message', newMessage, () => {
       console.log("Message received!");
@@ -81,7 +85,7 @@ console.log('here i am in app!');
 socket.on('message', (data) => {
   console.log(`data is: ${data}`);
   const newMessage = document.createElement('div');
-  newMessage.append(data);
+  newMessage.append(`${data.user}  ${data.body}`);
   document.getElementById('chat-container').append(newMessage);
 });
 
