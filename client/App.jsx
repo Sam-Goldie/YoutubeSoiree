@@ -1,4 +1,5 @@
 const React = require('react');
+const socket = io('http://localhost:80');
 // import PropTypes from 'prop-types';
 const UrlSubmission = require('./UrlSubmission.jsx');
 const ChatContainer = require('./ChatContainer.jsx');
@@ -68,5 +69,9 @@ class App extends React.Component {
     );
   }
 }
+
+socket.on('message', (data) => {
+  console.log(data);
+});
 
 module.exports = App;
