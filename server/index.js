@@ -13,8 +13,12 @@ const server = app.listen(port, () => {
 
 const io = socketIO(server);
 
-io.on('connection', (socket) => {
-  console.log('Socket connection made');
+io.on('connect', (socket) => {
+  console.log('connection made');
+  socket.emit('message', 'HELLO');
+  // socket.on('message', (res) => {
+  //   console.log(res);
+  // });
 });
 
 // app.get('/node_modules/socket.io/client-dist/socket.io.js', (err, res) => {

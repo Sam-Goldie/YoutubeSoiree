@@ -1,5 +1,8 @@
 const React = require('react');
-const socket = io('http://localhost:80');
+const messageContainer = document.getElementById('chat-container');
+// const io = require('http://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js');
+const socket = io('http://localhost:3000');
+console.log(`what is io: ${typeof io}`)
 // import PropTypes from 'prop-types';
 const UrlSubmission = require('./UrlSubmission.jsx');
 const ChatContainer = require('./ChatContainer.jsx');
@@ -39,12 +42,19 @@ class App extends React.Component {
 
   addMessage() {
     console.log(`here is the state of messages before adding new one: ${JSON.stringify(this.state.messages)}`);
-    this.setState({
-      messages: [...this.state.messages, {
-        user: this.state.currentUser,
-        body: document.getElementById('message-input').value,
-      }],
+    const newMessage = document.getElementById('message-input').value;
+    console.log(`heres the new message: ${newMessage}`);
+    console.log(`what is socket: ${Object.entries(socket)}`);
+    console.log(`what is socket.emit: ${socket.emit}`);
+    socket.emit('message', newMessage, () => {
+      console.log("Message received!");
     });
+    // this.setState({
+    //   messages: [...this.state.messages, {
+    //     user: this.state.currentUser,
+    //     body: newMessage,
+    //   }],
+    // });
   }
 
   // App.propTypes = {
@@ -70,8 +80,10 @@ class App extends React.Component {
   }
 }
 
+console.log('here i am in app!');
 socket.on('message', (data) => {
-  console.log(data);
+  console.log('message received!');
+  document.getElementById('chat-container').append(data);
 });
 
 module.exports = App;
