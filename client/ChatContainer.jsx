@@ -1,5 +1,5 @@
 const React = require('react');
-const socket = io('http://localhost:3000');
+// const socket = io('http://localhost:3000');
 // const Message = require('./Message.jsx');
 
 const ChatContainer = ({ messages }) => (

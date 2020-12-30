@@ -1,5 +1,4 @@
 const React = require('react');
-const messageContainer = document.getElementById('chat-container');
 // const io = require('http://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js');
 const socket = io('http://localhost:3000');
 console.log(`what is io: ${typeof io}`)
@@ -44,8 +43,6 @@ class App extends React.Component {
     console.log(`here is the state of messages before adding new one: ${JSON.stringify(this.state.messages)}`);
     const newMessage = document.getElementById('message-input').value;
     console.log(`heres the new message: ${newMessage}`);
-    console.log(`what is socket: ${Object.entries(socket)}`);
-    console.log(`what is socket.emit: ${socket.emit}`);
     socket.emit('message', newMessage, () => {
       console.log("Message received!");
     });
@@ -82,8 +79,10 @@ class App extends React.Component {
 
 console.log('here i am in app!');
 socket.on('message', (data) => {
-  console.log('message received!');
-  document.getElementById('chat-container').append(data);
+  console.log(`data is: ${data}`);
+  const newMessage = document.createElement('div');
+  newMessage.append(data);
+  document.getElementById('chat-container').append(newMessage);
 });
 
 module.exports = App;
