@@ -28,4 +28,4 @@ const onYoutubeIframeAPIReady = () => {
   });
 };
 
-module.exports = onYoutubeIframeAPIReady;
+export default onYoutubeIframeAPIReady;

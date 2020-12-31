@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 const Message = ({ message }) => (
   <div className="message">
@@ -11,4 +11,4 @@ const Message = ({ message }) => (
   </div>
 );
 
-module.exports = Message;
+export default Message;

@@ -1,10 +1,11 @@
-const React = require('react');
+import React from 'react';
 // const io = require('http://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js');
+import UrlSubmission from './urlSubmission.jsx';
+import ChatContainer from './ChatContainer.jsx';
+import ChatInput from './ChatInput.jsx';
+
 const socket = io('http://localhost:3000');
 // import PropTypes from 'prop-types';
-const UrlSubmission = require('./UrlSubmission.jsx');
-const ChatContainer = require('./ChatContainer.jsx');
-const ChatInput = require('./ChatInput.jsx');
 // const VideoDisplay = require('./VideoDisplay.jsx');
 // const onYoutubeIframeAPIReady = require('./onYoutubeIframeAPIReady.js');
 
@@ -90,4 +91,4 @@ socket.on('message', (data) => {
   document.getElementById('chat-container').append(newMessage);
 });
 
-module.exports = App;
+export default App;

@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 // const socket = io('http://localhost:3000');
 // const Message = require('./Message.jsx');
 
@@ -12,4 +12,4 @@ const ChatContainer = ({ messages }) => (
   // return null;
 );
 
-module.exports = ChatContainer;
+export default ChatContainer;

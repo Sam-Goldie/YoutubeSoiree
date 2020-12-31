@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 console.log('im in urlSubmission');
 
@@ -12,4 +12,4 @@ const UrlSubmission = (props) => {
   );
 };
 
-module.exports = UrlSubmission;
+export default UrlSubmission;
