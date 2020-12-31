@@ -5,8 +5,10 @@
   </head>
   <body>
     <h1>WELCOME TO YOUTUBE PARTY!</h1>
+    <div id='video-player'></div>
     <div id='app'></div>
-    <script defer src="index.js"></script>
+    <script defer src="https://www.youtube.com/iframe_api"></script>
+    <script defer src= "./onYoutubeIframeAPIReady.js"></script>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script type='text/javascript' defer src='./bundle.js'></script>
   </body>

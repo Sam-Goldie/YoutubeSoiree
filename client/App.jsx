@@ -1,12 +1,12 @@
 const React = require('react');
 // const io = require('http://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js');
 const socket = io('http://localhost:3000');
-console.log(`what is io: ${typeof io}`)
 // import PropTypes from 'prop-types';
 const UrlSubmission = require('./UrlSubmission.jsx');
 const ChatContainer = require('./ChatContainer.jsx');
 const ChatInput = require('./ChatInput.jsx');
-const VideoDisplay = require('./VideoDisplay.jsx');
+// const VideoDisplay = require('./VideoDisplay.jsx');
+// const onYoutubeIframeAPIReady = require('./onYoutubeIframeAPIReady.js');
 
 class App extends React.Component {
   constructor() {
@@ -74,7 +74,7 @@ class App extends React.Component {
     return (
       <div>
         <UrlSubmission changeVideo={this.changeVideo.bind(this)} />
-        <VideoDisplay url={this.state.url} />
+        {/* <VideoDisplay url={this.state.url} /> */}
         <ChatInput addMessage={this.addMessage.bind(this)} />
         <ChatContainer messages={this.state.messages}/>
       </div>
