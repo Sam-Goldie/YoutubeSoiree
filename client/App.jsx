@@ -42,14 +42,15 @@ class App extends React.Component {
   addMessage() {
     console.log(`here is the state of messages before adding new one: ${JSON.stringify(this.state.messages)}`);
     const newText = document.getElementById('message-input').value;
-    const newMessage = {
+    const addedMessage = {
       user: this.state.currentUser,
       body: newText,
     };
-    console.log(`heres the new message: ${newMessage}`);
-    socket.emit('message', newMessage, () => {
-      console.log("Message received!");
-    });
+    console.log(`heres the new message: ${addedMessage}`);
+    socket.emit('message', addedMessage);
+    const newMessage = document.createElement('div');
+    newMessage.append(`Me  ${addedMessage.body}`);
+    document.getElementById('chat-container').append(newMessage);
     // this.setState({
     //   messages: [...this.state.messages, {
     //     user: this.state.currentUser,
