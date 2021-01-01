@@ -90,10 +90,12 @@ socket.on('message', (data) => {
   document.getElementById('chat-container').append(newMessage);
 });
 socket.on('play', (timecode) => {
+  // player.seekTo(timecode, true);
   player.playVideo();
 });
 
 socket.on('pause', (timecode) => {
+  player.seekTo(timecode, true);
   player.pauseVideo();
 });
 
