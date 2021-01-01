@@ -1,10 +1,12 @@
-const React = require('react');
-const socket = io('http://localhost:80');
+import React from 'react';
+// const io = require('http://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js');
+import UrlSubmission from './urlSubmission.jsx';
+import ChatContainer from './ChatContainer.jsx';
+import ChatInput from './ChatInput.jsx';
+
 // import PropTypes from 'prop-types';
-const UrlSubmission = require('./UrlSubmission.jsx');
-const ChatContainer = require('./ChatContainer.jsx');
-const ChatInput = require('./ChatInput.jsx');
-const VideoDisplay = require('./VideoDisplay.jsx');
+// const VideoDisplay = require('./VideoDisplay.jsx');
+// const onYoutubeIframeAPIReady = require('./onYoutubeIframeAPIReady.js');
 
 class App extends React.Component {
   constructor() {
@@ -39,12 +41,22 @@ class App extends React.Component {
 
   addMessage() {
     console.log(`here is the state of messages before adding new one: ${JSON.stringify(this.state.messages)}`);
-    this.setState({
-      messages: [...this.state.messages, {
-        user: this.state.currentUser,
-        body: document.getElementById('message-input').value,
-      }],
-    });
+    const newText = document.getElementById('message-input').value;
+    const addedMessage = {
+      user: this.state.currentUser,
+      body: newText,
+    };
+    console.log(`heres the new message: ${addedMessage}`);
+    socket.emit('message', addedMessage);
+    const newMessage = document.createElement('div');
+    newMessage.append(`Me  ${addedMessage.body}`);
+    document.getElementById('chat-container').append(newMessage);
+    // this.setState({
+    //   messages: [...this.state.messages, {
+    //     user: this.state.currentUser,
+    //     body: newMessage,
+    //   }],
+    // });
   }
 
   // App.propTypes = {
@@ -62,7 +74,7 @@ class App extends React.Component {
     return (
       <div>
         <UrlSubmission changeVideo={this.changeVideo.bind(this)} />
-        <VideoDisplay url={this.state.url} />
+        {/* <VideoDisplay url={this.state.url} /> */}
         <ChatInput addMessage={this.addMessage.bind(this)} />
         <ChatContainer messages={this.state.messages}/>
       </div>
@@ -70,8 +82,19 @@ class App extends React.Component {
   }
 }
 
+console.log('here i am in app!');
 socket.on('message', (data) => {
-  console.log(data);
+  console.log(`data is: ${data}`);
+  const newMessage = document.createElement('div');
+  newMessage.append(`${data.user}  ${data.body}`);
+  document.getElementById('chat-container').append(newMessage);
+});
+socket.on('play', (timecode) => {
+  player.playVideo();
 });
 
-module.exports = App;
+socket.on('pause', (timecode) => {
+  player.pauseVideo();
+});
+
+export default App;

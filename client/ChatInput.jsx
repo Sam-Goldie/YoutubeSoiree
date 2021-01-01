@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 const ChatInput = ({ addMessage }) => (
   <div>
@@ -7,4 +7,4 @@ const ChatInput = ({ addMessage }) => (
   </div>
 );
 
-module.exports = ChatInput;
+export default ChatInput;
