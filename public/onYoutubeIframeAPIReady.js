@@ -1,31 +1,57 @@
-let player;
+const socket = io('http://localhost:3000');
 
-const togglePlayback = (event) => {
-  if (event.data === YT.PlayerState.playing) {
-    document.getElementById('playButton').innerHTML = 'Pause';
-    document.getElementById('playButton').onclick = () => {
-      player.pauseVideo();
-    };
-  } else if (event.data === YT.PlayerState.paused) {
-    document.getElementById('playButton').innerHTML = 'Play';
-    document.getElementById('playButton').onclick = () => {
-      player.playVideo();
-    };
-  }
-};
+var tag = document.createElement('script');
 
-console.log('im in the oniframeapiready file!');
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[1];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-const onYoutubeIframeAPIReady = () => {
-  console.log('Youtube Iframe is ready!');
+var player;
+function onYouTubeIframeAPIReady() {
   player = new YT.Player('video-player', {
-    width: '560',
-    height: '315',
-    videoId: 'IY9YNF5MMQo',
+    height: '390',
+    width: '640',
+    videoId: 'M7lc1UVf-VE',
     events: {
-      onStateChange: togglePlayback,
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange,
     },
   });
-};
+}
 
-export default onYoutubeIframeAPIReady;
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+var done = false;
+function onPlayerStateChange(event) {
+  console.log('onPlayerStateChange just fired!');
+  // if (event.data == YT.PlayerState.PLAYING && !done) {
+  //   setTimeout(stopVideo, 6000);
+  //   done = true;
+  // }
+  // for some reason, neither of these two are actually happening
+  if (event.data === YT.PlayerState.PLAYING) {
+    // document.getElementById('ytp-play-button ytp-button').innerHTML = 'Pause';
+    console.log('player now playing');
+    socket.emit('play', player.getCurrentTime());
+    // document.getElementById('ytp-play-button ytp-button').onclick = () => {
+    //   player.pauseVideo();
+    // };
+  } else if (event.data === YT.PlayerState.PAUSED) {
+    console.log('player now paused');
+    socket.emit('pause', player.getCurrentTime());
+    // document.getElementById('ytp-play-button ytp-button').innerHTML = 'Play';
+    // document.getElementById('ytp-play-button ytp-button').onclick = () => {
+    //   player.playVideo();
+    // };
+  }
+}
+
+// console.log('im in the oniframeapiready file!');
+
+function stopVideo() {
+  player.stopVideo();
+}
+
+// ====== MY CODE ABOVE ^^^ ========

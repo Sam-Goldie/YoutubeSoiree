@@ -20,6 +20,14 @@ io.on('connection', (socket) => {
     console.log(message.body);
     socket.broadcast.emit('message', message);
   });
+  socket.on('play', (timecode) => {
+    console.log('play command received!');
+    socket.broadcast.emit('play', timecode);
+  });
+  socket.on('pause', (timecode) => {
+    console.log('pause command received!');
+    socket.broadcast.emit('pause', timecode);
+  });
 });
 
 // app.get('/node_modules/socket.io/client-dist/socket.io.js', (err, res) => {

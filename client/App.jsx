@@ -4,7 +4,6 @@ import UrlSubmission from './urlSubmission.jsx';
 import ChatContainer from './ChatContainer.jsx';
 import ChatInput from './ChatInput.jsx';
 
-const socket = io('http://localhost:3000');
 // import PropTypes from 'prop-types';
 // const VideoDisplay = require('./VideoDisplay.jsx');
 // const onYoutubeIframeAPIReady = require('./onYoutubeIframeAPIReady.js');
@@ -89,6 +88,13 @@ socket.on('message', (data) => {
   const newMessage = document.createElement('div');
   newMessage.append(`${data.user}  ${data.body}`);
   document.getElementById('chat-container').append(newMessage);
+});
+socket.on('play', (timecode) => {
+  player.playVideo();
+});
+
+socket.on('pause', (timecode) => {
+  player.pauseVideo();
 });
 
 export default App;
