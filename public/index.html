@@ -2,11 +2,12 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
     <h1>YOUTUBE PARTY</h1>
-    <div id='video-player'></div>
+    <div id='video-container'>
+      <div id='video-player'></div>
+    </div>
     <div id='app'></div>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src= "./onYoutubeIframeAPIReady.js"></script>

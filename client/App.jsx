@@ -3,8 +3,7 @@ import React from 'react';
 import UrlSubmission from './urlSubmission.jsx';
 import ChatContainer from './ChatContainer.jsx';
 import ChatInput from './ChatInput.jsx';
-import style from './style.css';
-console.log('what is style: ' + JSON.stringify(style));
+import './style.css';
 
 // import PropTypes from 'prop-types';
 // const VideoDisplay = require('./VideoDisplay.jsx');

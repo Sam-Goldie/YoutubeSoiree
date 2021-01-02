@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 console.log('im in urlSubmission');
 

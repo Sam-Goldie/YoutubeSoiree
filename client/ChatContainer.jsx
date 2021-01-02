@@ -1,4 +1,6 @@
 import React from 'react';
+import './style.css';
+
 // const socket = io('http://localhost:3000');
 // const Message = require('./Message.jsx');
 
