@@ -7,17 +7,20 @@ var firstScriptTag = document.getElementsByTagName('script')[1];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
-function onYouTubeIframeAPIReady() {
+function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
+  debugger;
+  console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
     height: '100%',
     width: '100%',
-    videoId: 'M7lc1UVf-VE',
+    videoId: url,
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,
     },
   });
+  // player.src = `http://www.youtube.com/embed/${url}`;
 }
 
 function onPlayerReady(event) {
