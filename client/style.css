@@ -1,0 +1,42 @@
+body {
+  display: grid;
+  grid-template-rows: 80px 60px 60px minmax(360px, 720px);
+  grid-template-columns: minmax(640px, 1280px) 150px;
+}
+
+#video-container {
+  grid-area: 2 / 1 / 5 / 2;
+  width: 1280px;
+  height: 720px;
+}
+
+#submit-box {
+  display: inline;
+  margin-top: 80px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+
+#message-input {
+  display: inline;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+}
+
+#chat-container {
+  display: inline;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  grid-row: 4 / 5;
+  grid-column-start: 2;
+}
+
+button {
+  display: inline;
+  margin-left: 5px;
+  margin-bottom: 5px;
+}

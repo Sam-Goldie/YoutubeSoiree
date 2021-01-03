@@ -9,12 +9,13 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('video-player', {
-    height: '390',
-    width: '640',
+    // why am i hardcapped on iframe dimensions?
+    height: '100%',
+    width: '100%',
     videoId: 'M7lc1UVf-VE',
     events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange,
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange,
     },
   });
 }
@@ -23,8 +24,8 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-var done = false;
 function onPlayerStateChange(event) {
+  console.log(`heres the event: ${JSON.stringify(event)}`);
   console.log('onPlayerStateChange just fired!');
   // if (event.data == YT.PlayerState.PLAYING && !done) {
   //   setTimeout(stopVideo, 6000);
@@ -50,8 +51,8 @@ function onPlayerStateChange(event) {
 
 // console.log('im in the oniframeapiready file!');
 
-function stopVideo() {
-  player.stopVideo();
-}
+// function stopVideo() {
+//   player.stopVideo();
+// }
 
 // ====== MY CODE ABOVE ^^^ ========

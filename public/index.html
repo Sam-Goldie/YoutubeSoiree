@@ -4,9 +4,21 @@
     <meta charset='UTF-8'>
   </head>
   <body>
-    <h1>WELCOME TO YOUTUBE PARTY!</h1>
-    <div id='video-player'></div>
-    <div id='app'></div>
+    <div id='app'>
+      <h1>YOUTUBE PARTY</h1>
+      <div id='video-container'>
+        <div id='video-player'></div>
+      </div>
+      <div>
+        <input id="submit-box" type="text" />
+        <button id="url-submit" type="submit">Submit</button>
+      </div>
+      <div>
+        <input id="message-input" />
+        <button id="message-submit" type="submit">Send</button>
+      </div>
+      <div id="chat-container">
+    </div>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src= "./onYoutubeIframeAPIReady.js"></script>
     <script type='text/javascript' defer src='./bundle.js'></script>

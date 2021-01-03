@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 
 const Message = ({ message }) => (
   <div className="message">

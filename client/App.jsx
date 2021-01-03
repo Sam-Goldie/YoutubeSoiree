@@ -3,6 +3,7 @@ import React from 'react';
 import UrlSubmission from './urlSubmission.jsx';
 import ChatContainer from './ChatContainer.jsx';
 import ChatInput from './ChatInput.jsx';
+import './style.css';
 
 // import PropTypes from 'prop-types';
 // const VideoDisplay = require('./VideoDisplay.jsx');
@@ -90,11 +91,18 @@ socket.on('message', (data) => {
   document.getElementById('chat-container').append(newMessage);
 });
 socket.on('play', (timecode) => {
+  // player.seekTo(timecode, true);
   player.playVideo();
 });
 
 socket.on('pause', (timecode) => {
+  player.seekTo(timecode, true);
   player.pauseVideo();
+});
+
+// I never emit this signal as of yet
+socket.on('seek', (timecode) => {
+  player.seekTo(timecode, true);
 });
 
 export default App;
