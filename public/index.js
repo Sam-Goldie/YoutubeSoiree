@@ -1,8 +1,9 @@
-import './style.css';
 import './socketConnect.js';
 console.log('im inside index.js in the client folder');
 
 // let currentVideo = 'https://youtu.be/IY9YNF5MMQo';
+
+// https://youtu.be/LFeJuCYoyfQ
 
 document.getElementById('url-submit').onclick = () => {
   console.log('IM INSIDE CHANGEVIDEO!');
@@ -10,6 +11,8 @@ document.getElementById('url-submit').onclick = () => {
   document.getElementById('submit-box').value = '';
   if (newVideoId.includes('watch?v=')) {
     newVideoId = newVideoId.replace('watch?v=', 'embed/');
+  } else if (!newVideoId.includes('embed')) {
+    newVideoId = `${newVideoId.substring(0, newVideoId.lastIndexOf('/') + 1)}embed/${newVideoId.substring(newVideoId.lastIndexOf('/'))}`;
   }
   if (newVideoId.includes('&')) {
     newVideoId = newVideoId.substring(0, newVideoId.indexOf('&'));
