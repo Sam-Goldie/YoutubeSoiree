@@ -28,6 +28,10 @@ io.on('connection', (socket) => {
     console.log('pause command received!');
     socket.broadcast.emit('pause', timecode);
   });
+  socket.on('url', (url) => {
+    console.log('new url received!');
+    socket.broadcast.emit('url', url);
+  });
 });
 
 // app.get('/node_modules/socket.io/client-dist/socket.io.js', (err, res) => {
