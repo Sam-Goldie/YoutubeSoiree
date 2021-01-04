@@ -12,8 +12,8 @@ function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
   console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
-    height: '100%',
-    width: '100%',
+    height: '80%',
+    width: '80%',
     videoId: url,
     events: {
       onReady: onPlayerReady,
