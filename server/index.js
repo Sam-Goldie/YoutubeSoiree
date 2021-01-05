@@ -14,8 +14,6 @@ const server = app.listen(port, () => {
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
-  console.log('connection made');
-  socket.emit('message', 'HELLO');
   socket.on('message', (message) => {
     console.log(message.body);
     socket.broadcast.emit('message', message);

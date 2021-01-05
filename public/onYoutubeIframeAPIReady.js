@@ -7,14 +7,13 @@ var firstScriptTag = document.getElementsByTagName('script')[1];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
-function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
-  debugger;
+function onYouTubeIframeAPIReady(videoId = 'M7lc1UVf-VE') {
   console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
     height: '100%',
     width: '100%',
-    videoId: url,
+    videoId,
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,

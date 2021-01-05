@@ -1,4 +1,6 @@
 body, html {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: lightcyan;
   padding: 0;
   margin: 0;
 }
@@ -6,16 +8,19 @@ body, html {
 #app {
   display: grid;
   overflow: hidden;
-  grid-template-rows: 80px 60px 60px minmax(360px, 720px);
-  grid-template-columns: minmax(240px, 1280px) 200px;
+  grid-template-rows: 100px 28px 760px 60px;
+  grid-template-columns: minmax(240px, 1280px) 300px;
 }
 
 #url-submission {
   grid-area: 2 / 2 / span 1 / span 1;
+  margin-left: 10px;
 }
 
 #message-submission {
-  grid-area: 3 / 2 / span 1 / span 1;
+  grid-area: 4 / 2 / span 1 / span 1;
+  margin-left: 6px;
+  margin-top: 5px;
 }
 
 #video-player {
@@ -24,6 +29,7 @@ body, html {
 }
 
 #video-container {
+  padding-left: 10px;
   grid-row-start: 2;
   grid-row-end: 5;
   width: auto;
@@ -31,11 +37,13 @@ body, html {
 }
 
 #submit-box {
+  width: 205px;
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
 }
 
 #message-input {
+  width: 218px;
   margin-left: 5px;
   margin-bottom: 5px;
   grid-row: 3 / 4;
@@ -43,16 +51,31 @@ body, html {
 }
 
 #chat-container {
-  width: 150px;
+  background-color: white;
+  border: 2px solid lightpink;
+  width: auto;
   height: auto;
   overflow: scroll;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  grid-row: 4 / 5;
-  grid-column: 2 / 3;
+  margin-left: 10px;
+  margin-right: 10px;
+  grid-row: 3 / span 1;
+  grid-column: 2 / span 1;
+}
+
+#chat-container div {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+h1 {
+  padding-left: 15px;
+  font-size: 50px;
+  color: hotpink;
+  font-style: oblique;
+  justify-self: left;
+  align-self: center;
 }
 
 button {
-  margin-left: 5px;
-  margin-bottom: 5px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

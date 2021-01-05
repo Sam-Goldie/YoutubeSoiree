@@ -5,18 +5,25 @@ console.log('im inside index.js in the client folder');
 
 // https://youtu.be/LFeJuCYoyfQ
 
+document.addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    document.getElementById('message-submit').click();
+  }
+});
+
 document.getElementById('url-submit').onclick = () => {
   console.log('IM INSIDE CHANGEVIDEO!');
   let newVideoId = document.getElementById('submit-box').value;
   document.getElementById('submit-box').value = '';
   newVideoId = newVideoId.substring(newVideoId.lastIndexOf('/') + 1);
-  if (newVideoId.includes('?')) {
-    newVideoId = newVideoId.substring(0, newVideoId.lastIndexOf('?'));
+  if (newVideoId.includes('watch?v=')) {
+    newVideoId = newVideoId.substring(newVideoId.indexOf('=') + 1);
   }
   if (newVideoId.includes('&')) {
     newVideoId = newVideoId.substring(0, newVideoId.lastIndexOf('&'));
   }
   console.log(`the newURL is: ${newVideoId}`);
+  debugger;
   socket.emit('url', newVideoId);
   player.loadVideoById(newVideoId);
   // player = new YT.Player('video-player', {
@@ -39,13 +46,17 @@ document.getElementById('message-submit').onclick = () => {
     user: 'Sam Goldie',
     body: newText,
   };
+  document.getElementById('message-input').value = '';
   console.log(`heres the new message: ${addedMessage}`);
   socket.emit('message', addedMessage);
   const newMessage = document.createElement('div');
-  newMessage.append(`Me  ${addedMessage.body}`);
+  newMessage.append(`Me:  ${addedMessage.body}`);
   const chatContainer = document.getElementById('chat-container');
   chatContainer.append(newMessage);
   chatContainer.scrollBy(0, chatContainer.scrollHeight);
+  // if (chatContainer.scrollHeight - chatContainer.scrollTop <= 730) {
+  //   chatContainer.scrollBy(0, chatContainer.scrollHeight);
+  // }
   // jquery('chat-container').scrollTop(jquery('chat-container')[0].scrollHeight);
   // this.setState({
   //   messages: [...this.state.messages, {
