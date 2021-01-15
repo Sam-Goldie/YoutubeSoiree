@@ -25,4 +25,5 @@ Default port for the app is 3000.
 
 # Technologies
 
-YoutubeSoiree is written in Javascript. Static files are served up by Express, and video sync and text chat are both handled through Socket.io.
+* YoutubeSoiree is written in Javascript. 
+* Static files are served up by Express, and video sync and text chat are both handled through Socket.io.
