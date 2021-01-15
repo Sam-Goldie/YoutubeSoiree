@@ -2,6 +2,12 @@
 
 Youtube Soiree is an in-development single-page app that allows multiple users to watch Youtube videos with syncronized playback in what is commonly known as a "watch party."
 
+# Why Build YoutubeSoiree?
+
+Trying to make the most of time spent with friends can be tough during a pandemic. While trying to watch Youtube videos remotely with a few friends, we found that the "watch party" apps already available online for Youtube were disappointing. Not only were the text chat features unpleasant to use, but the most essential features of those apps, their playback syncs, were simply not reliable. After experiencing hours of grief trying to remain synced up with my friends, I realized it was time to take matters into my own hands.
+
+# Features
+
 Features include: 
 * Syncronized playback (obviously)
 * A text chat feature
