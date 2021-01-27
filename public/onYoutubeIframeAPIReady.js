@@ -7,7 +7,7 @@ var firstScriptTag = document.getElementsByTagName('script')[1];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
-function onYouTubeIframeAPIReady(videoId = 'M7lc1UVf-VE') {
+function onYouTubeIframeAPIReady(videoId = 'WvUmb98EZps') {
   console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
@@ -48,6 +48,16 @@ function onPlayerStateChange(event) {
     // document.getElementById('ytp-play-button ytp-button').onclick = () => {
     //   player.playVideo();
     // };
+  } else if (event.data === YT.PlayerState.ENDED) {
+    console.log('reached the end!');
+    // this needs to somehow wait until the requests come back for the end screen links -- how do I know when that happens?
+    document.getElementsByClassName('ytp-videowall-still ytp-suggestion-set').forEach((suggestion) => {
+      suggestion.onclick((e) => {
+        setTimeout(() => {
+          player.loadVideoById(e.target.href);
+        }, 1000);
+      });
+    });
   }
 }
 

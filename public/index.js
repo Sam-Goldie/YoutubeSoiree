@@ -41,6 +41,9 @@ document.getElementById('url-submit').onclick = () => {
 // onclick={window.changeVideo}
 document.getElementById('message-submit').onclick = () => {
   const newText = document.getElementById('message-input').value;
+  if (newText === '') {
+    return;
+  }
   console.log('heres the newText: ' + newText);
   const addedMessage = {
     user: 'Sam Goldie',

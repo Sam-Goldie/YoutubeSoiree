@@ -9,7 +9,7 @@ body, html {
   display: grid;
   overflow: hidden;
   grid-template-rows: 100px 28px 760px 60px;
-  grid-template-columns: minmax(240px, 1280px) 300px;
+  grid-template-columns: minmax(240px, 1280px) 400px;
 }
 
 #url-submission {
@@ -37,13 +37,13 @@ body, html {
 }
 
 #submit-box {
-  width: 205px;
+  width: 304px;
   grid-column: 2 / span 1;
   grid-row: 2 / span 1;
 }
 
 #message-input {
-  width: 218px;
+  width: 318px;
   margin-left: 5px;
   margin-bottom: 5px;
   grid-row: 3 / 4;
@@ -53,6 +53,7 @@ body, html {
 #chat-container {
   background-color: white;
   border: 2px solid lightpink;
+  border-radius: 5px;
   width: auto;
   height: auto;
   overflow: scroll;
@@ -63,6 +64,7 @@ body, html {
 }
 
 #chat-container div {
+  padding-top: 1px;
   padding-left: 3px;
   padding-right: 3px;
 }
@@ -74,6 +76,12 @@ h1 {
   font-style: oblique;
   justify-self: left;
   align-self: center;
+}
+
+h3 {
+  padding-left: 15px;
+  align-self: end;
+  grid-area: 1 / 2 / span 1 / span 1;
 }
 
 button {
