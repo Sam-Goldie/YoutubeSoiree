@@ -50,14 +50,17 @@ function onPlayerStateChange(event) {
     // };
   } else if (event.data === YT.PlayerState.ENDED) {
     console.log('reached the end!');
+    const videoPlayer = document.getElementById('video-player');
     // this needs to somehow wait until the requests come back for the end screen links -- how do I know when that happens?
-    document.getElementsByClassName('ytp-videowall-still ytp-suggestion-set').forEach((suggestion) => {
-      suggestion.onclick((e) => {
-        setTimeout(() => {
+    setTimeout(() => {
+      console.log('about to get elements by class name');
+      Array.from(videoPlayer.getElementsByClassName('ytp-videowall-still ytp-suggestion-set')).forEach((suggestion) => {
+        console.log('heres a suggestion!');
+        suggestion.onclick((e) => {
           player.loadVideoById(e.target.href);
-        }, 1000);
+        });
       });
-    });
+    }, 2000);
   }
 }
 
