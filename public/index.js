@@ -57,40 +57,8 @@ document.getElementById('message-submit').onclick = () => {
   const chatContainer = document.getElementById('chat-container');
   chatContainer.append(newMessage);
   chatContainer.scrollBy(0, chatContainer.scrollHeight);
-  // if (chatContainer.scrollHeight - chatContainer.scrollTop <= 730) {
-  //   chatContainer.scrollBy(0, chatContainer.scrollHeight);
-  // }
-  // jquery('chat-container').scrollTop(jquery('chat-container')[0].scrollHeight);
-  // this.setState({
-  //   messages: [...this.state.messages, {
-  //     user: this.state.currentUser,
-  //     body: newMessage,
-  //   }],
-  // });
 };
 
-// App.propTypes = {
-//   url: PropTypes.string,
-//   changeVideo: PropTypes.func,
-// };
-
-// App.defaultProps = {
-//   url: 'https://www.youtube.com/embed/IY9YNF5MMQo',
-//   changeVideo,
-// };
-
-// render() {
-//   console.log(`heres thises changeVideo: ${this.changeVideo}`);
-//   return (
-//     <div>
-//       <UrlSubmission changeVideo={this.changeVideo.bind(this)} />
-//       {/* <VideoDisplay url={this.state.url} /> */}
-//       <ChatInput addMessage={this.addMessage.bind(this)} />
-//       <ChatContainer messages={this.state.messages}/>
-//     </div>
-//   );
-// }
-
-console.log('here i am in app!');
-
-// not exporting anything at the moment
+document.getElementById('session-submit').onclick = () => {
+  document.cookie = `session=${document.getElementById('session-input').value}`;
+};
