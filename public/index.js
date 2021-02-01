@@ -1,4 +1,6 @@
 import './socketConnect.js';
+import Cookies from 'js-cookie';
+console.log('what is Cookies lol?' + Cookies);
 console.log('im inside index.js in the client folder');
 
 // let currentVideo = 'https://youtu.be/IY9YNF5MMQo';
@@ -60,5 +62,6 @@ document.getElementById('message-submit').onclick = () => {
 };
 
 document.getElementById('session-submit').onclick = () => {
-  document.cookie = `session=${document.getElementById('session-input').value}`;
+  console.log('setting the cookies!!');
+  Cookies.set('session', document.getElementById('session-input').value);
 };
