@@ -1,5 +1,5 @@
 import './socketConnect.js';
-import Cookies from 'js-cookie';
+import Cookies from '../node_modules/js-cookie/src/js.cookie.js';
 console.log('what is Cookies lol?' + Cookies);
 console.log('im inside index.js in the client folder');
 
