@@ -54,7 +54,7 @@ function onPlayerStateChange(event) {
     // this needs to somehow wait until the requests come back for the end screen links -- how do I know when that happens?
     setTimeout(() => {
       console.log('about to get elements by class name');
-      Array.from(videoPlayer.getElementsByClassName('ytp-videowall-still ytp-suggestion-set')).forEach((suggestion) => {
+      Array.from(videoPlayer.contentDocument.getElementsByClassName('ytp-videowall-still ytp-suggestion-set')).forEach((suggestion) => {
         console.log('heres a suggestion!');
         suggestion.onclick((e) => {
           player.loadVideoById(e.target.href);
