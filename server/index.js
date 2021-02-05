@@ -5,7 +5,7 @@ const port = 3000;
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static('dist'));
 
 const server = app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
