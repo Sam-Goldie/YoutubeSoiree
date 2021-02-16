@@ -1,3 +1,5 @@
+// all the socket stuff in here can go later - just look up socket.io again
+
 const socket = io('http://localhost:3000');
 
 var tag = document.createElement('script');

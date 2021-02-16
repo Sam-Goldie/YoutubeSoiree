@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; img-src https://i.ytimg.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js">
     <!-- <link rel="stylesheet" href="style.css"> -->
   </head>
   <body>
@@ -26,8 +26,8 @@
       </div>
       <div id="chat-container">
     </div>
-    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
-    <script defer src= "./onYoutubeIframeAPIReady.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script defer src="./onYoutubeIframeAPIReady.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
