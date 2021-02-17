@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
     <!-- <link rel="stylesheet" href="style.css"> -->
   </head>
   <body>
@@ -21,13 +21,15 @@
         <button id="message-submit" type="submit">Send</button>
       </div>
       <div>
-        <input id='session-input'>
+        <input id='session-input' />
         <button id='session-submit'>Submit</button>
       </div>
       <div id="chat-container">
     </div>
+    <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
     <script defer src="./onYoutubeIframeAPIReady.js"></script>
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
+    <script type="module" defer src="./addClickEvents.js"></script>
   </body>
 </html>
