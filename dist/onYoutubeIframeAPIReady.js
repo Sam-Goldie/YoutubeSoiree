@@ -1,3 +1,5 @@
+// all the socket stuff in here can go later - just look up socket.io again
+
 const socket = io('http://localhost:3000');
 
 var tag = document.createElement('script');
@@ -7,14 +9,13 @@ var firstScriptTag = document.getElementsByTagName('script')[1];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
-function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
-  debugger;
+function onYouTubeIframeAPIReady(videoId = 'WvUmb98EZps') {
   console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
     height: '100%',
     width: '100%',
-    videoId: url,
+    videoId,
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,
@@ -49,6 +50,19 @@ function onPlayerStateChange(event) {
     // document.getElementById('ytp-play-button ytp-button').onclick = () => {
     //   player.playVideo();
     // };
+  } else if (event.data === YT.PlayerState.ENDED) {
+    console.log('reached the end!');
+    const videoPlayer = document.getElementById('video-player');
+    // this needs to somehow wait until the requests come back for the end screen links -- how do I know when that happens?
+    setTimeout(() => {
+      console.log('about to get elements by class name');
+      Array.from(videoPlayer.contentDocument.getElementsByClassName('ytp-videowall-still ytp-suggestion-set')).forEach((suggestion) => {
+        console.log('heres a suggestion!');
+        suggestion.onclick((e) => {
+          player.loadVideoById(e.target.href);
+        });
+      });
+    }, 2000);
   }
 }
 
