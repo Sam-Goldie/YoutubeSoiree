@@ -54,7 +54,8 @@ document.getElementById('message-submit').onclick = () => {
   };
   document.getElementById('message-input').value = '';
   console.log(`heres the new message: ${addedMessage}`);
-  socket.emit('message', addedMessage);
+  console.log(`here are the cookies: ${Cookies.get('session')}`);
+  socket.emit('message', addedMessage, Cookies.get('session'));
   const newMessage = document.createElement('div');
   newMessage.append(`Me:  ${addedMessage.body}`);
   const chatContainer = document.getElementById('chat-container');

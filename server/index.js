@@ -13,10 +13,11 @@ const server = app.listen(port, () => {
 
 const io = socketIO(server);
 
-io.on('connection', (socket) => {
+io.on('connection', (socket, sessionId) => {
+  socket.join(sessionId);
   socket.on('message', (message) => {
     console.log(message.body);
-    socket.broadcast.emit('message', message);
+    socket.to(sessionId).emit('message', message);
   });
   socket.on('play', (timecode) => {
     console.log('play command received!');

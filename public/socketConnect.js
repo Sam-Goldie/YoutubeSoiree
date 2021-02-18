@@ -6,8 +6,9 @@
 // chatContainer.append(newMessage);
 // chatContainer.scrollBy(0, chatContainer.scrollHeight);
 
-socket.on('message', (data) => {
+socket.on('message', (data, sessionId) => {
   console.log(`data is: ${data}`);
+  console.log(`sessionId is ${sessionId}`);
   const newMessage = document.createElement('div');
   newMessage.append(`${data.user}:  ${data.body}`);
   const chatContainer = document.getElementById('chat-container');
