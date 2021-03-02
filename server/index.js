@@ -31,6 +31,9 @@ io.on('connection', (socket, sessionId) => {
     console.log('new url received!');
     socket.broadcast.emit('url', url);
   });
+  socket.on('join', (roomId) => {
+    socket.broadcast.emit('join', roomId);
+  });
 });
 
 // app.get('/node_modules/socket.io/client-dist/socket.io.js', (err, res) => {

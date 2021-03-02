@@ -34,3 +34,8 @@ socket.on('seek', (timecode) => {
 socket.on('url', (url) => {
   player.loadVideoById(url);
 });
+
+socket.on('join', () => {
+  player.pauseVideo();
+  socket.emit('pause', player.getCurrentTime());
+});
