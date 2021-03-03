@@ -36,6 +36,7 @@ socket.on('url', (url) => {
 });
 
 socket.on('join', () => {
+  console.log('someone just joined!');
   player.pauseVideo();
   socket.emit('pause', player.getCurrentTime());
 });

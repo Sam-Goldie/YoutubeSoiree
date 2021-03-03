@@ -15,8 +15,10 @@ const io = socketIO(server);
 
 io.on('connection', (socket, sessionId) => {
   socket.join(sessionId);
-  socket.on('message', (message) => {
+  console.log(sessionId);
+  socket.on('message', (message, sessionId) => {
     console.log(message.body);
+    console.log(`What is sessionId? ${sessionId}`);
     socket.to(sessionId).emit('message', message);
   });
   socket.on('play', (timecode) => {
