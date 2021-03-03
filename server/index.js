@@ -1,17 +1,18 @@
 const express = require('express');
-const socketIO = require('socket.io');
-
-const port = 3000;
 
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
-app.use(express.static('dist'));
+const sessionHandler = require('io-session-handler').from(io);
 
-const server = app.listen(port, () => {
-  console.log(`App is listening on port ${port}`);
+sessionHandler.connectionListener((connection) => {
+  console.log(connection);
 });
 
-const io = socketIO(server);
+http.listen(3000);
+
+app.use(express.static('dist'));
 
 io.on('connection', (socket, sessionId) => {
   socket.join(sessionId);
