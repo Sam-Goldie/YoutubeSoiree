@@ -66,5 +66,6 @@ document.getElementById('session-submit').onclick = () => {
   console.log('setting the cookies!!');
   const roomId = document.getElementById('session-input').value;
   Cookies.set('session', roomId);
+  console.log('about to send a join signal to the server');
   socket.emit('join', roomId);
 };
