@@ -1,0 +1,13 @@
+Features to implement:
+
+Emojis
+Modal that asks you to name yourself when you start
+A queue for videos that can be set to autoplay
+A custom full-screen with a togglable chat sidebar
+
+Fixes to make:
+Need to make sure that playback is always synced, regardless of user behavior (something wasn't quite right in that regard)
+
+Stretch goals:
+An account system with a signin and basic authentication
+A basic profile where you could view your video history.
