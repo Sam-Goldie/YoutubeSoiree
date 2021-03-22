@@ -25,6 +25,9 @@ function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
 function onPlayerReady(event) {
   event.target.playVideo();
   console.log(player);
+  const csp = player.h.contentWindow.createElement('meta');
+  csp.setAttribute("http-equiv", "Content-Security-Policy");
+  csp.setAttribute("content", "default-src 'self' http://localhost:3000");
   player.h.contentWindow.onclick(function() {
     console.log('CLICK EVENT SUCCESSFUL!');
   });

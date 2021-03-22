@@ -2,13 +2,19 @@
 <html>
   <head>
     <meta charset='UTF-8'>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com https://youtu.be; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com; style-src-elem 'self' https://fonts.googleapis.com">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id='app'>
       <h1>YOUTUBE PARTY</h1>
-      <div id='video-container'>
+      <!-- <div id='video-container'>
         <div id='video-player'></div>
+      </div> -->
+      <div id='video-container'>
+        <video width='320' height='240' id='video-content' controls>
+          <source src='https://youtu.be/tcDzXDmfpXQ' type='video/mp4'>
+        </video>
       </div>
       <div>
         <input id="submit-box" type="text" />
