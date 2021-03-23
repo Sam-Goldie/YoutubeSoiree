@@ -4,7 +4,12 @@ body {
   grid-template-columns: minmax(640px, 1280px) 150px;
 }
 
+#fullscreen-toggle {
+  justify-self: right;
+}
+
 #video-container {
+  display: flex;
   grid-area: 2 / 1 / 5 / 2;
   width: 1280px;
   height: 720px;
@@ -28,11 +33,9 @@ body {
 }
 
 #chat-container {
-  display: inline;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  grid-row: 4 / 5;
-  grid-column-start: 2;
+  color: white;
+  width: 200px;
+  justify-self: right;
 }
 
 button {
