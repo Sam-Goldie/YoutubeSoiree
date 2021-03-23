@@ -26,7 +26,15 @@ function onPlayerReady(event) {
   event.target.playVideo();
   console.log(player);
   document.getElementById('fullscreen-toggle').addEventListener('click', function() {
-    console.log('CLICK EVENT SUCCESSFUL!');
+    if (!document.fullscreenElement) {
+      document.getElementById('video-container').requestFullscreen().catch(function(err) {
+        if (err) {
+          console.log(err);
+        }
+      })
+    } else {
+      document.exitFullscreen();
+    }
   });
 }
 
