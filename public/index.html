@@ -2,11 +2,13 @@
 <html>
   <head>
     <meta charset='UTF-8'>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div id='app'>
       <h1>YOUTUBE PARTY</h1>
+      <button id='fullscreen-toggle'>Fullscreen</button>
       <div id='video-container'>
         <div id='video-player'></div>
       </div>

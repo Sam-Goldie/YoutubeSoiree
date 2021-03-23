@@ -25,7 +25,7 @@ function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
 function onPlayerReady(event) {
   event.target.playVideo();
   console.log(player);
-  player.h.contentWindow.onclick(function() {
+  document.getElementById('fullscreen-toggle').addEventListener('click', function() {
     console.log('CLICK EVENT SUCCESSFUL!');
   });
 }
