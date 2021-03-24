@@ -1,45 +1,60 @@
-body {
+#app {
   display: grid;
   grid-template-rows: 80px 60px 60px minmax(360px, 720px);
   grid-template-columns: minmax(640px, 1280px) 150px;
 }
 
+h1 {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
 #fullscreen-toggle {
-  justify-self: right;
+  height: 25px;
+  order: 3;
+  text-align: center;
 }
 
 #video-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 50px 200px;
+  grid-template-rows: auto 25px 25px;
   grid-area: 2 / 1 / 5 / 2;
   width: 1280px;
   height: 720px;
 }
 
-#submit-box {
+#submit-input {
   display: inline;
-  margin-top: 80px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  grid-column: 2 / span 1;
-  grid-row: 2 / span 1;
+  margin-top: 30px;
+}
+
+#submit-box {
+  grid-column-start: 2;
+}
+
+#video-player {
+  grid-area: 1 / 1 / 3 / 1;
+  background-color: orange;
+}
+
+#message-submit {
+  grid-area: 2 / 2 / 3 / 3;
+  width: fit-content;
+  height: fit-content;
 }
 
 #message-input {
-  display: inline;
   margin-left: 5px;
   margin-bottom: 5px;
-  grid-row: 3 / 4;
-  grid-column: 2 / 3;
+  grid-area: 2 / 3 / 2 / 4;
 }
 
 #chat-container {
-  color: white;
-  width: 200px;
-  justify-self: right;
+  grid-area: 1 / 2 / 4 / 3
 }
 
-button {
+/* button {
   display: inline;
   margin-left: 5px;
   margin-bottom: 5px;
-}
+} */
