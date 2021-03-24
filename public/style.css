@@ -1,7 +1,7 @@
 #app {
   display: grid;
   grid-template-rows: 80px 60px 60px minmax(360px, 720px);
-  grid-template-columns: minmax(640px, 1280px) 150px;
+  grid-template-columns: 300px minmax(640px, 1280px) 150px;
 }
 
 h1 {
@@ -50,7 +50,9 @@ h1 {
 }
 
 #chat-container {
-  grid-area: 1 / 2 / 4 / 3
+  overflow: scroll;
+  background-color: white;
+  grid-area: 1 / 2 / 2 / 4
 }
 
 /* button {
