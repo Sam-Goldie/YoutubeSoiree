@@ -9,15 +9,15 @@ h1 {
 }
 
 #fullscreen-toggle {
-  height: 25px;
-  order: 3;
-  text-align: center;
+  grid-area: 1 / 2 / 2 / 3;
+  width: fit-content;
+  margin-left: 3px;
 }
 
 #video-container {
   display: grid;
   grid-template-columns: auto 50px 200px;
-  grid-template-rows: auto 25px 25px;
+  grid-template-rows: 25px auto 25px 25px;
   grid-area: 2 / 1 / 5 / 2;
   width: 1280px;
   height: 720px;
@@ -33,26 +33,31 @@ h1 {
 }
 
 #video-player {
-  grid-area: 1 / 1 / 3 / 1;
+  grid-area: 1 / 1 / 4 / 1;
   background-color: orange;
 }
 
 #message-submit {
-  grid-area: 2 / 2 / 3 / 3;
+  margin-left: 4px;
+  grid-area: 3 / 2 / 4 / 3;
   width: fit-content;
-  height: fit-content;
+  height: 25px;
+  border-radius: 2px;
 }
 
 #message-input {
   margin-left: 5px;
-  margin-bottom: 5px;
-  grid-area: 2 / 3 / 2 / 4;
+  grid-area: 3 / 3 / 3 / 4;
+  border-radius: 2px;
 }
 
 #chat-container {
+  margin: 3px;
+  padding-left: 2px;
   overflow: scroll;
   background-color: white;
-  grid-area: 1 / 2 / 2 / 4
+  grid-area: 2 / 2 / 3 / 4;
+  border-radius: 3px;
 }
 
 /* button {
