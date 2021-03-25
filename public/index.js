@@ -31,6 +31,12 @@ document.getElementById('url-submit').onclick = () => {
   // });
 };
 
+document.getElementById('message-input').addEventListener('keyup', function(event) {
+  if (event.key === 'Enter') {
+    document.getElementById('message-submit').click();
+  }
+});
+
 // onclick={window.changeVideo}
 document.getElementById('message-submit').onclick = () => {
   const newText = document.getElementById('message-input').value;
