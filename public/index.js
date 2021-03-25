@@ -41,6 +41,9 @@ document.getElementById('message-input').addEventListener('keyup', function(even
 document.getElementById('message-submit').onclick = () => {
   const messageBox = document.getElementById('message-input');
   const newText = messageBox.value;
+  if (newText === '') {
+    return;
+  }
   messageBox.value = '';
   console.log('heres the newText: ' + newText);
   const addedMessage = {
