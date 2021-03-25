@@ -7,8 +7,8 @@ console.log('im inside index.js in the client folder');
 
 document.getElementById('url-submit').onclick = () => {
   console.log('IM INSIDE CHANGEVIDEO!');
-  let newVideoId = document.getElementById('submit-box').value;
-  document.getElementById('submit-box').value = '';
+  let newVideoId = document.getElementById('submit-input').value;
+  document.getElementById('submit-input').value = '';
   newVideoId = newVideoId.substring(newVideoId.lastIndexOf('/') + 1);
   if (newVideoId.includes('?')) {
     newVideoId = newVideoId.substring(0, newVideoId.lastIndexOf('?'));

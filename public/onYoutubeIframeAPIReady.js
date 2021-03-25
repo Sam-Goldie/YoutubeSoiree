@@ -17,7 +17,7 @@ function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
     playerVars: {
       'autoplay': 1,
       'controls': 1,
-      'fs' : 1,
+      'fs' : 0,
     },
     events: {
       onReady: onPlayerReady,
