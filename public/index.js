@@ -39,7 +39,9 @@ document.getElementById('message-input').addEventListener('keyup', function(even
 
 // onclick={window.changeVideo}
 document.getElementById('message-submit').onclick = () => {
-  const newText = document.getElementById('message-input').value;
+  const messageBox = document.getElementById('message-input');
+  const newText = messageBox.value;
+  messageBox.value = '';
   console.log('heres the newText: ' + newText);
   const addedMessage = {
     user: 'Sam Goldie',
