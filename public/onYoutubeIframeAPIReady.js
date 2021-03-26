@@ -9,26 +9,18 @@ var firstScriptTag = document.getElementsByTagName('script')[1];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
-<<<<<<< HEAD:public/onYoutubeIframeAPIReady.js
 function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
-=======
-function onYouTubeIframeAPIReady(videoId = 'WvUmb98EZps') {
->>>>>>> 8dcb348aadd99852a874c62a4a1a3a188212d495:dist/onYoutubeIframeAPIReady.js
   console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
     height: '100%',
     width: '100%',
-<<<<<<< HEAD:public/onYoutubeIframeAPIReady.js
     videoId: url,
     playerVars: {
       'autoplay': 1,
       'controls': 1,
       'fs' : 0,
     },
-=======
-    videoId,
->>>>>>> 8dcb348aadd99852a874c62a4a1a3a188212d495:dist/onYoutubeIframeAPIReady.js
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,
