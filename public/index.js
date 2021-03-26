@@ -1,7 +1,4 @@
-import './socketConnect';
-import Cookies from '../node_modules/js-cookie/src/js.cookie.js';
-
-console.log('what is Cookies lol?' + Cookies);
+import './socketConnect.js';
 console.log('im inside index.js in the client folder');
 
 // let currentVideo = 'https://youtu.be/IY9YNF5MMQo';
@@ -17,25 +14,19 @@ document.getElementById('username-submit').onclick = () => {
     document.getElementById('username-modal').style.display = 'none';
   }
 }
-document.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
-    document.getElementById('message-submit').click();
-  }
-});
 
 document.getElementById('url-submit').onclick = () => {
   console.log('IM INSIDE CHANGEVIDEO!');
   let newVideoId = document.getElementById('submit-input').value;
   document.getElementById('submit-input').value = '';
   newVideoId = newVideoId.substring(newVideoId.lastIndexOf('/') + 1);
-  if (newVideoId.includes('watch?v=')) {
-    newVideoId = newVideoId.substring(newVideoId.indexOf('=') + 1);
+  if (newVideoId.includes('?')) {
+    newVideoId = newVideoId.substring(0, newVideoId.lastIndexOf('?'));
   }
   if (newVideoId.includes('&')) {
     newVideoId = newVideoId.substring(0, newVideoId.lastIndexOf('&'));
   }
   console.log(`the newURL is: ${newVideoId}`);
-  debugger;
   socket.emit('url', newVideoId);
   player.loadVideoById(newVideoId);
   // player = new YT.Player('video-player', {
@@ -69,17 +60,41 @@ document.getElementById('message-submit').onclick = () => {
     user: username,
     body: newText,
   };
-  document.getElementById('message-input').value = '';
   console.log(`heres the new message: ${addedMessage}`);
   socket.emit('message', addedMessage);
   const newMessage = document.createElement('div');
-  newMessage.append(`Me:  ${addedMessage.body}`);
-  const chatContainer = document.getElementById('chat-container');
-  chatContainer.append(newMessage);
-  chatContainer.scrollBy(0, chatContainer.scrollHeight);
+  newMessage.append(`Me  ${addedMessage.body}`);
+  document.getElementById('chat-container').append(newMessage);
+  // this.setState({
+  //   messages: [...this.state.messages, {
+  //     user: this.state.currentUser,
+  //     body: newMessage,
+  //   }],
+  // });
 };
 
-document.getElementById('session-submit').onclick = () => {
-  console.log('setting the cookies!!');
-  Cookies.set('session', document.getElementById('session-input').value);
-};
+// App.propTypes = {
+//   url: PropTypes.string,
+//   changeVideo: PropTypes.func,
+// };
+
+// App.defaultProps = {
+//   url: 'https://www.youtube.com/embed/IY9YNF5MMQo',
+//   changeVideo,
+// };
+
+// render() {
+//   console.log(`heres thises changeVideo: ${this.changeVideo}`);
+//   return (
+//     <div>
+//       <UrlSubmission changeVideo={this.changeVideo.bind(this)} />
+//       {/* <VideoDisplay url={this.state.url} /> */}
+//       <ChatInput addMessage={this.addMessage.bind(this)} />
+//       <ChatContainer messages={this.state.messages}/>
+//     </div>
+//   );
+// }
+
+console.log('here i am in app!');
+
+// not exporting anything at the moment
