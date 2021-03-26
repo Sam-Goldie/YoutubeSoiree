@@ -5,6 +5,16 @@ console.log('im inside index.js in the client folder');
 
 // https://youtu.be/LFeJuCYoyfQ
 
+let username;
+
+document.getElementById('username-submit').onclick = () => {
+  const newUsername = document.getElementById('username-entry').value;
+  if (newUsername !== '') {
+    username = newUsername;
+    document.getElementById('username-modal').style.display = 'none';
+  }
+}
+
 document.getElementById('url-submit').onclick = () => {
   console.log('IM INSIDE CHANGEVIDEO!');
   let newVideoId = document.getElementById('submit-input').value;
@@ -47,7 +57,7 @@ document.getElementById('message-submit').onclick = () => {
   messageBox.value = '';
   console.log('heres the newText: ' + newText);
   const addedMessage = {
-    user: 'Sam Goldie',
+    user: username,
     body: newText,
   };
   console.log(`heres the new message: ${addedMessage}`);
