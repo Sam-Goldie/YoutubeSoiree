@@ -1,16 +1,18 @@
 // turns out, iframes keep track of time data more granularly than seconds. implement greater precision of playback sync when you have time
 
+// const newMessage = document.createElement('div');
+// newMessage.append(`Me  ${addedMessage.body}`);
+// const chatContainer = document.getElementById('chat-container');
+// chatContainer.append(newMessage);
+// chatContainer.scrollBy(0, chatContainer.scrollHeight);
+
 socket.on('message', (data) => {
   console.log(`data is: ${data}`);
   const newMessage = document.createElement('div');
-  newMessage.append(`${data.user}  ${data.body}`);
+  newMessage.append(`${data.user}:  ${data.body}`);
   const chatContainer = document.getElementById('chat-container');
-  console.log('the current distance from bottom is: ' + (chatContainer.height - chatContainer.scrollTop).toString());
-  if (chatContainer.height - chatContainer.scrollTop === 0) {
-    chatContainer.append(newMessage);
-    chatContainer.scrollTo(chatContainer.height, 0);
-  }
   chatContainer.append(newMessage);
+  chatContainer.scrollBy(0, chatContainer.scrollHeight);
 });
 
 socket.on('play', (timecode) => {

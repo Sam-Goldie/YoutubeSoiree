@@ -5,7 +5,7 @@ const port = 3000;
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static('dist'));
 
 const server = app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
@@ -14,8 +14,6 @@ const server = app.listen(port, () => {
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
-  console.log('connection made');
-  socket.emit('message', 'HELLO');
   socket.on('message', (message) => {
     console.log(message.body);
     socket.broadcast.emit('message', message);

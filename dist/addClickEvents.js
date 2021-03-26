@@ -1,5 +1,5 @@
-import './socketConnect';
-import Cookies from '../node_modules/js-cookie/src/js.cookie.js';
+// import './socketConnect';
+// import Cookies from '../node_modules/js-cookie/src/js.cookie.js';
 
 console.log('what is Cookies lol?' + Cookies);
 console.log('im inside index.js in the client folder');
@@ -8,25 +8,16 @@ console.log('im inside index.js in the client folder');
 
 // https://youtu.be/LFeJuCYoyfQ
 
-let username;
-
-document.getElementById('username-submit').onclick = () => {
-  const newUsername = document.getElementById('username-entry').value;
-  if (newUsername !== '') {
-    username = newUsername;
-    document.getElementById('username-modal').style.display = 'none';
-  }
-}
 document.addEventListener('keyup', (event) => {
-  if (event.key === 'Enter') {
+  if (event.keyCode === 13) {
     document.getElementById('message-submit').click();
   }
 });
 
 document.getElementById('url-submit').onclick = () => {
   console.log('IM INSIDE CHANGEVIDEO!');
-  let newVideoId = document.getElementById('submit-input').value;
-  document.getElementById('submit-input').value = '';
+  let newVideoId = document.getElementById('submit-box').value;
+  document.getElementById('submit-box').value = '';
   newVideoId = newVideoId.substring(newVideoId.lastIndexOf('/') + 1);
   if (newVideoId.includes('watch?v=')) {
     newVideoId = newVideoId.substring(newVideoId.indexOf('=') + 1);
@@ -50,23 +41,15 @@ document.getElementById('url-submit').onclick = () => {
   // });
 };
 
-document.getElementById('message-input').addEventListener('keyup', function(event) {
-  if (event.key === 'Enter') {
-    document.getElementById('message-submit').click();
-  }
-});
-
 // onclick={window.changeVideo}
 document.getElementById('message-submit').onclick = () => {
-  const messageBox = document.getElementById('message-input');
-  const newText = messageBox.value;
+  const newText = document.getElementById('message-input').value;
   if (newText === '') {
     return;
   }
-  messageBox.value = '';
   console.log('heres the newText: ' + newText);
   const addedMessage = {
-    user: username,
+    user: 'Sam Goldie',
     body: newText,
   };
   document.getElementById('message-input').value = '';
