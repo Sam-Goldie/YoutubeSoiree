@@ -1,5 +1,3 @@
-// all the socket stuff in here can go later - just look up socket.io again
-
 const socket = io('http://localhost:3000');
 
 var tag = document.createElement('script');
@@ -9,26 +7,18 @@ var firstScriptTag = document.getElementsByTagName('script')[1];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
-<<<<<<< HEAD:public/onYoutubeIframeAPIReady.js
 function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
-=======
-function onYouTubeIframeAPIReady(videoId = 'WvUmb98EZps') {
->>>>>>> 8dcb348aadd99852a874c62a4a1a3a188212d495:dist/onYoutubeIframeAPIReady.js
   console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
     height: '100%',
     width: '100%',
-<<<<<<< HEAD:public/onYoutubeIframeAPIReady.js
     videoId: url,
     playerVars: {
       'autoplay': 1,
       'controls': 1,
       'fs' : 0,
     },
-=======
-    videoId,
->>>>>>> 8dcb348aadd99852a874c62a4a1a3a188212d495:dist/onYoutubeIframeAPIReady.js
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,
@@ -89,19 +79,6 @@ function onPlayerStateChange(event) {
     // document.getElementById('ytp-play-button ytp-button').onclick = () => {
     //   player.playVideo();
     // };
-  } else if (event.data === YT.PlayerState.ENDED) {
-    console.log('reached the end!');
-    const videoPlayer = document.getElementById('video-player');
-    // this needs to somehow wait until the requests come back for the end screen links -- how do I know when that happens?
-    setTimeout(() => {
-      console.log('about to get elements by class name');
-      Array.from(videoPlayer.contentDocument.getElementsByClassName('ytp-videowall-still ytp-suggestion-set')).forEach((suggestion) => {
-        console.log('heres a suggestion!');
-        suggestion.onclick((e) => {
-          player.loadVideoById(e.target.href);
-        });
-      });
-    }, 2000);
   }
 }
 
