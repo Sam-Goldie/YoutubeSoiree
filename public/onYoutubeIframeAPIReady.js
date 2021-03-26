@@ -8,13 +8,17 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
-  debugger;
   console.log('onYoutubeIframe activated!');
   player = new YT.Player('video-player', {
     // why am i hardcapped on iframe dimensions?
     height: '100%',
     width: '100%',
     videoId: url,
+    playerVars: {
+      'autoplay': 1,
+      'controls': 1,
+      'fs' : 0,
+    },
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange,
@@ -25,6 +29,32 @@ function onYouTubeIframeAPIReady(url = 'M7lc1UVf-VE') {
 
 function onPlayerReady(event) {
   event.target.playVideo();
+  console.log(player);
+  document.getElementById('fullscreen-toggle').addEventListener('click', function() {
+    if (!document.fullscreenElement) {
+      document.getElementById('video-container').requestFullscreen().catch(function(err) {
+        if (err) {
+          console.log(err);
+        }
+      })
+    } else {
+      document.exitFullscreen();
+    }
+  });
+  const originalButton = event.target.getElementsByClassName('ytp-fullscreen-button ytp-button')[0];
+  const fullscreenButton = originalButton.cloneNode(true);
+  originalButton.parentNode.replaceChild(fullscreenButton, originalButton);
+  fullscreenButton.addEventListener('click', function() {
+    if (!document.fullscreenElement) {
+      document.getElementById('video-container').requestFullscreen().catch(function(err) {
+        if (err) {
+          console.log(err);
+        }
+      })
+    } else {
+      document.exitFullscreen();
+    }
+  });
 }
 
 function onPlayerStateChange(event) {

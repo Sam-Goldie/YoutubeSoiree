@@ -4,7 +4,13 @@ socket.on('message', (data) => {
   console.log(`data is: ${data}`);
   const newMessage = document.createElement('div');
   newMessage.append(`${data.user}  ${data.body}`);
-  document.getElementById('chat-container').append(newMessage);
+  const chatContainer = document.getElementById('chat-container');
+  console.log('the current distance from bottom is: ' + (chatContainer.height - chatContainer.scrollTop).toString());
+  if (chatContainer.height - chatContainer.scrollTop === 0) {
+    chatContainer.append(newMessage);
+    chatContainer.scrollTo(chatContainer.height, 0);
+  }
+  chatContainer.append(newMessage);
 });
 
 socket.on('play', (timecode) => {

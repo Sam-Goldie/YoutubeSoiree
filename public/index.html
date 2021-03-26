@@ -2,23 +2,28 @@
 <html>
   <head>
     <meta charset='UTF-8'>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div id='username-modal'>
+      <div id='username-instruction'>Who are you? Please enter your name</div>
+      <input id='username-entry' type='text' />
+      <button id='username-submit' type='submit'>Submit</button>
+    </div>
     <div id='app'>
       <h1>YOUTUBE PARTY</h1>
-      <div id='video-container'>
-        <div id='video-player'></div>
-      </div>
-      <div>
-        <input id="submit-box" type="text" />
+      <div id='submit-box'>
+        <input id="submit-input" type="text" />
         <button id="url-submit" type="submit">Submit</button>
       </div>
-      <div>
+      <div id='video-container'>
+        <button id='fullscreen-toggle'>Fullscreen</button>
         <input id="message-input" />
         <button id="message-submit" type="submit">Send</button>
+        <div id="chat-container"></div>
+        <div id='video-player'></div>
       </div>
-      <div id="chat-container">
     </div>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src= "./onYoutubeIframeAPIReady.js"></script>
