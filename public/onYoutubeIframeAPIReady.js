@@ -1,4 +1,4 @@
-const socket = io('http://localhost:3000');
+const socket = io('http://3.19.76.217:3000/');
 
 var tag = document.createElement('script');
 
@@ -31,20 +31,6 @@ function onPlayerReady(event) {
   event.target.playVideo();
   console.log(player);
   document.getElementById('fullscreen-toggle').addEventListener('click', function() {
-    if (!document.fullscreenElement) {
-      document.getElementById('video-container').requestFullscreen().catch(function(err) {
-        if (err) {
-          console.log(err);
-        }
-      })
-    } else {
-      document.exitFullscreen();
-    }
-  });
-  const originalButton = event.target.getElementsByClassName('ytp-fullscreen-button ytp-button')[0];
-  const fullscreenButton = originalButton.cloneNode(true);
-  originalButton.parentNode.replaceChild(fullscreenButton, originalButton);
-  fullscreenButton.addEventListener('click', function() {
     if (!document.fullscreenElement) {
       document.getElementById('video-container').requestFullscreen().catch(function(err) {
         if (err) {

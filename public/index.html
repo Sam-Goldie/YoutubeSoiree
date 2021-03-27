@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://3.19.76.217:3000/socket.io/ ws://3.19.76.217:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -25,7 +25,7 @@
         <div id='video-player'></div>
       </div>
     </div>
-    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="http://3.19.76.217:3000/socket.io/socket.io.js"></script>
     <script defer src= "./onYoutubeIframeAPIReady.js"></script>
     <script type="module" defer src="./index.js"></script>
   </body>
