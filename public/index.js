@@ -64,7 +64,12 @@ document.getElementById('message-submit').onclick = () => {
   socket.emit('message', addedMessage);
   const newMessage = document.createElement('div');
   newMessage.append(`Me  ${addedMessage.body}`);
-  document.getElementById('chat-container').append(newMessage);
+  const chatContainer = document.getElementById('chat-container');
+  if (jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]).offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
+    chatContainer.append(newMessage);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+  }
+  chatContainer.append(newMessage);
   // this.setState({
   //   messages: [...this.state.messages, {
   //     user: this.state.currentUser,

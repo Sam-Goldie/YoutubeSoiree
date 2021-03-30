@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://3.19.76.217:3000/socket.io/ ws://3.19.76.217:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://3.19.76.217:3000/socket.io/ ws://3.19.76.217:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' https://code.jquery.com/jquery-3.6.0.min.js  http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div id='username-modal'>
@@ -21,7 +22,9 @@
         <button id='fullscreen-toggle'>Fullscreen</button>
         <input id="message-input" />
         <button id="message-submit" type="submit">Send</button>
-        <div id="chat-container"></div>
+        <div id="chat-container">
+	  <div>just a baby message for a baby</div>
+	</div>
         <div id='video-player'></div>
       </div>
     </div>
