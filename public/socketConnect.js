@@ -3,6 +3,7 @@
 socket.on('message', (data) => {
   console.log(`data is: ${data}`);
   const newMessage = document.createElement('div');
+  newMessage.setAttribute('class', 'message');
   newMessage.append(`${data.user}:  ${data.body}`);
   const chatContainer = document.getElementById('chat-container');
   console.log('the current distance from bottom is: ' + (chatContainer.height - chatContainer.scrollTop).toString());
