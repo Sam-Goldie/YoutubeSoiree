@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://3.19.76.217:3000/socket.io/ ws://3.19.76.217:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' https://code.jquery.com/jquery-3.6.0.min.js  http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://3.22.191.212:3000/socket.io/ ws://3.22.191.212:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' http://3.22.191.212:3000/socket.io/socket.io.js https://code.jquery.com/jquery-3.6.0.min.js http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
@@ -13,7 +13,7 @@
       <button id='username-submit' type='submit'>Submit</button>
     </div>
     <div id='app'>
-      <h1>YOUTUBE PARTY</h1>
+      <h1>YOUTUBE SOIREE</h1>
       <div id='submit-box'>
         <input id="submit-input" type="text" />
         <button id="url-submit" type="submit">Submit</button>
@@ -28,7 +28,7 @@
         <div id='video-player'></div>
       </div>
     </div>
-    <script defer src="http://3.19.76.217:3000/socket.io/socket.io.js"></script>
+    <script defer src="http://3.22.191.212:3000/socket.io/socket.io.js"></script>
     <script defer src= "./onYoutubeIframeAPIReady.js"></script>
     <script type="module" defer src="./index.js"></script>
   </body>

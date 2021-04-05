@@ -17,6 +17,7 @@ io.on('connection', (socket) => {
   console.log('connection made');
   socket.emit('message', 'HELLO');
   socket.on('message', (message) => {
+    console.log('a message came through');
     console.log(message.body);
     socket.broadcast.emit('message', message);
   });

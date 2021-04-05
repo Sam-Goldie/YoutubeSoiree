@@ -1,4 +1,4 @@
-const socket = io('http://3.19.76.217:3000/');
+const socket = io('http://3.22.191.212:3000/');
 
 var tag = document.createElement('script');
 

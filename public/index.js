@@ -63,7 +63,7 @@ document.getElementById('message-submit').onclick = () => {
   console.log(`heres the new message: ${addedMessage}`);
   socket.emit('message', addedMessage);
   const newMessage = document.createElement('div');
-  newMessage.append(`Me  ${addedMessage.body}`);
+  newMessage.append(`Me:  ${addedMessage.body}`);
   const chatContainer = document.getElementById('chat-container');
   if (jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]).offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
     chatContainer.append(newMessage);
