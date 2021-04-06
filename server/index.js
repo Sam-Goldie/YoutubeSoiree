@@ -16,6 +16,7 @@ const io = socketIO(server);
 io.on('connection', (socket) => {
   socket.emit('message', 'HELLO');
   socket.on('message', (message) => {
+    console.log('a message came through');
     console.log(message.body);
     socket.broadcast.emit('message', message);
   });
@@ -33,9 +34,3 @@ io.on('connection', (socket) => {
   });
 });
 
-// app.get('/node_modules/socket.io/client-dist/socket.io.js', (err, res) => {
-//   if (err) {
-//     console.log(err);
-//   }
-//   res.status(200).send('../node_modules/socket.io/client-dist/socket.io.js');
-// });

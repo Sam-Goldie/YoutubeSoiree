@@ -6,11 +6,13 @@ socket.on('message', (data) => {
   let mustScroll = false;
   console.log(`data is: ${data}`);
   const newMessage = document.createElement('div');
-  newMessage.append(`${data.user}  ${data.body}`);
+  newMessage.setAttribute('class', 'message');
+  newMessage.append(`${data.user}:  ${data.body}`);
   const chatContainer = document.getElementById('chat-container');
   console.log('the current distance from bottom is: ' + (chatContainer.height - chatContainer.scrollTop).toString());
-  if (chatContainer.height - chatContainer.scrollTop === 0) {
-    mustScroll = true;
+  if (jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]).offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
+    chatContainer.append(newMessage);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
   }
   chatContainer.append(newMessage);
   if (mustScroll) {

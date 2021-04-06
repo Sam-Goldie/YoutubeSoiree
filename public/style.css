@@ -89,8 +89,7 @@ h1 {
   border-radius: 3px;
 }
 
-/* button {
-  display: inline;
-  margin-left: 5px;
-  margin-bottom: 5px;
-} */
+.message {
+  padding-bottom: 1.5px;
+  padding-top: 1px;
+}
