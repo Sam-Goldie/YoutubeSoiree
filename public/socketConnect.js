@@ -1,6 +1,9 @@
 // turns out, iframes keep track of time data more granularly than seconds. implement greater precision of playback sync when you have time
 
+import './autoscrollChat.js';
+
 socket.on('message', (data) => {
+  let mustScroll = false;
   console.log(`data is: ${data}`);
   const newMessage = document.createElement('div');
   newMessage.setAttribute('class', 'message');
@@ -12,6 +15,9 @@ socket.on('message', (data) => {
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
   }
   chatContainer.append(newMessage);
+  if (mustScroll) {
+    autoscrollChat();
+  }
 });
 
 socket.on('play', (timecode) => {

@@ -1,10 +1,6 @@
 import './socketConnect.js';
 console.log('im inside index.js in the client folder');
 
-// let currentVideo = 'https://youtu.be/IY9YNF5MMQo';
-
-// https://youtu.be/LFeJuCYoyfQ
-
 let username;
 
 document.getElementById('username-submit').onclick = () => {
