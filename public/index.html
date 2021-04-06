@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://3.22.191.212:3000/socket.io/ ws://3.22.191.212:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' http://3.22.191.212:3000/socket.io/socket.io.js https://code.jquery.com/jquery-3.6.0.min.js http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://localhost:3000/socket.io/ ws://localhost:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' http://localhost:3000/socket.io/socket.io.js https://code.jquery.com/jquery-3.6.0.min.js http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com; style-src http://localhost:3000/style.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
@@ -28,7 +28,8 @@
         <div id='video-player'></div>
       </div>
     </div>
-    <script defer src="http://3.22.191.212:3000/socket.io/socket.io.js"></script>
+    <script type='module' defer src='http://localhost:3000/findColor.js'></script>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src= "./onYoutubeIframeAPIReady.js"></script>
     <script type="module" defer src="./index.js"></script>
   </body>
