@@ -83,7 +83,7 @@ h1 {
 #chat-container {
   margin: 3px;
   padding-left: 2px;
-  overflow: scroll;
+  overflow-y: scroll;
   background-color: white;
   grid-area: 2 / 2 / 3 / 4;
   border-radius: 3px;
@@ -95,6 +95,12 @@ h1 {
 }
 
 .chat-text {
-  display: inline-block;
-  padding-right: 6px;
+  display: inline;
+  overflow-wrap: break-word;
+}
+
+.username {
+  font-weight: 800;
+  float: left;
+  padding-right: 3px;
 }

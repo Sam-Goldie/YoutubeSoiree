@@ -64,7 +64,7 @@ document.getElementById('message-submit').onclick = () => {
   displayMessage.setAttribute('class', 'message');
   const displayName = document.createElement('div');
   displayName.setAttribute('class', addedMessage.user);
-  displayName.setAttribute('class', 'chat-text');
+  displayName.setAttribute('class', 'chat-text username');
   displayName.style.color = userColor;
   displayName.append(`${addedMessage.user}:  `);
   const chatContainer = document.getElementById('chat-container');
