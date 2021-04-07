@@ -1,3 +1,7 @@
+html {
+  background-color: darkslategray;
+}
+
 #app {
   display: grid;
   grid-template-rows: 80px 60px 60px minmax(360px, 720px);
@@ -63,7 +67,6 @@ h1 {
 
 #video-player {
   grid-area: 1 / 1 / 4 / 1;
-  background-color: orange;
 }
 
 #message-submit {
@@ -84,7 +87,7 @@ h1 {
   margin: 3px;
   padding-left: 2px;
   overflow-y: scroll;
-  background-color: white;
+  background-color: darkslategray;
   grid-area: 2 / 2 / 3 / 4;
   border-radius: 3px;
 }
@@ -97,10 +100,15 @@ h1 {
 .chat-text {
   display: inline;
   overflow-wrap: break-word;
+  color: white;
 }
 
 .username {
   font-weight: 800;
   float: left;
-  padding-right: 3px;
+  padding-right: 4px;
+}
+
+iframe {
+  background-color: darkslategray;
 }
