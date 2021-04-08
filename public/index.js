@@ -1,13 +1,15 @@
 import './socketConnect.js';
-console.log('im inside index.js in the client folder');
+import findColor from './findColor.js';
 
 let username;
+let userColor;
 
 document.getElementById('username-submit').onclick = () => {
   const newUsername = document.getElementById('username-entry').value;
   if (newUsername !== '') {
     username = newUsername;
     document.getElementById('username-modal').style.display = 'none';
+    userColor = findColor(newUsername);
   }
 }
 
@@ -58,16 +60,24 @@ document.getElementById('message-submit').onclick = () => {
   };
   console.log(`heres the new message: ${addedMessage}`);
   socket.emit('message', addedMessage);
-  const newMessage = document.createElement('div');
-  newMessage.setAttribute('class', 'message');
-  newMessage.innerHTML = `<b>${addedMessage.user}</b>`
-  newMessage.append(`:  ${addedMessage.body}`);
+  const displayMessage = document.createElement('div');
+  displayMessage.setAttribute('class', 'message');
+  const displayName = document.createElement('div');
+  displayName.setAttribute('class', addedMessage.user);
+  displayName.setAttribute('class', 'chat-text username');
+  displayName.style.color = userColor;
+  displayName.append(`${addedMessage.user}:  `);
   const chatContainer = document.getElementById('chat-container');
+  const displayBody = document.createElement('div');
+  displayBody.setAttribute('class', 'chat-text');
+  displayBody.append(`  ${addedMessage.body}`);
+  displayMessage.append(displayName);
+  displayMessage.append(displayBody);
   if (jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]).offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
-    chatContainer.append(newMessage);
+    chatContainer.append(displayMessage);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
   }
-  chatContainer.append(newMessage);
+  chatContainer.append(displayMessage);
   // this.setState({
   //   messages: [...this.state.messages, {
   //     user: this.state.currentUser,
