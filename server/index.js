@@ -1,5 +1,6 @@
 const express = require('express');
 const socketIO = require('socket.io');
+const escapeInput = require('./escapeInput.js');
 
 const port = 3000;
 
@@ -16,6 +17,7 @@ const io = socketIO(server);
 io.on('connection', (socket) => {
   socket.emit('message', 'HELLO');
   socket.on('message', (message) => {
+    message.body = escapeInput(message.body);
     console.log('a message came through');
     console.log(message.body);
     socket.broadcast.emit('message', message);
