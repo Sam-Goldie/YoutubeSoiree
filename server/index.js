@@ -1,12 +1,16 @@
 const express = require('express');
 const socketIO = require('socket.io');
 const escapeInput = require('./escapeInput.js');
+const path = require('path');
+const bodyParser = require('body-parser');
 
 const port = 3000;
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(path.join(__dirname, '../dist')));
 
 const server = app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
