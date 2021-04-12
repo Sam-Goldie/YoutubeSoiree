@@ -1,5 +1,5 @@
 html {
-  background-color: darkslategray;
+  background-color: rgb(116, 93, 68);
 }
 
 #app {
@@ -87,7 +87,7 @@ h1 {
   margin: 3px;
   padding-left: 2px;
   overflow-y: scroll;
-  background-color: darkslategray;
+  background-color: rgb(116, 93, 68);;
   grid-area: 2 / 2 / 3 / 4;
   border-radius: 3px;
 }
@@ -110,5 +110,5 @@ h1 {
 }
 
 iframe {
-  background-color: darkslategray;
+  background-color: rgb(116, 93, 68);;
 }
