@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../src')));
 
 const server = app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
