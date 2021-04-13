@@ -16,13 +16,14 @@ document.getElementById('username-submit').onclick = () => {
 document.getElementById('url-submit').onclick = () => {
   console.log('IM INSIDE CHANGEVIDEO!');
   let newVideoId = document.getElementById('submit-input').value;
+  console.log(`heres newVideoId initial value: ${newVideoId}`);
   document.getElementById('submit-input').value = '';
   newVideoId = newVideoId.substring(newVideoId.lastIndexOf('/') + 1);
   if (newVideoId.includes('?')) {
-    newVideoId = newVideoId.substring(0, newVideoId.lastIndexOf('?'));
+    newVideoId = newVideoId.substring(newVideoId.lastIndexOf('?') + 3);
   }
   if (newVideoId.includes('&')) {
-    newVideoId = newVideoId.substring(0, newVideoId.lastIndexOf('&'));
+    newVideoId = newVideoId.substring(0, newVideoId.indexOf('&'));
   }
   console.log(`the newURL is: ${newVideoId}`);
   socket.emit('url', newVideoId);
