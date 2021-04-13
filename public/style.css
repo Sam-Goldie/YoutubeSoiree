@@ -130,3 +130,20 @@ iframe {
 button {
   font-family: 'Lucida Sans Unicode', arial;
 }
+
+::-webkit-scrollbar {
+  color: white;
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #191919;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
