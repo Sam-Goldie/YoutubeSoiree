@@ -1,5 +1,6 @@
 html {
   background-color: black;
+  font-family: 'Lucida Sans Unicode', arial;
 }
 
 #app {
@@ -99,6 +100,7 @@ h1 {
 
 .chat-text {
   display: inline;
+  font-family: 'Lucida Sans Unicode', arial;
   overflow-wrap: break-word;
   color: white;
 }
@@ -123,4 +125,8 @@ iframe {
 
 .on-black {
   color: white;
+}
+
+button {
+  font-family: 'Lucida Sans Unicode', arial;
 }
