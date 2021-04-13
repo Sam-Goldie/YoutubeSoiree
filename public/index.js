@@ -14,9 +14,7 @@ document.getElementById('username-submit').onclick = () => {
 }
 
 document.getElementById('url-submit').onclick = () => {
-  console.log('IM INSIDE CHANGEVIDEO!');
   let newVideoId = document.getElementById('submit-input').value;
-  console.log(`heres newVideoId initial value: ${newVideoId}`);
   document.getElementById('submit-input').value = '';
   newVideoId = newVideoId.substring(newVideoId.lastIndexOf('/') + 1);
   if (newVideoId.includes('?')) {
@@ -25,19 +23,8 @@ document.getElementById('url-submit').onclick = () => {
   if (newVideoId.includes('&')) {
     newVideoId = newVideoId.substring(0, newVideoId.indexOf('&'));
   }
-  console.log(`the newURL is: ${newVideoId}`);
   socket.emit('url', newVideoId);
   player.loadVideoById(newVideoId);
-  // player = new YT.Player('video-player', {
-  //   // why am i hardcapped on iframe dimensions?
-  //   height: '100%',
-  //   width: '100%',
-  //   videoId: newVideoId,
-  //   events: {
-  //     onReady: onPlayerReady,
-  //     onStateChange: onPlayerStateChange,
-  //   },
-  // });
 };
 
 document.getElementById('message-input').addEventListener('keyup', function(event) {
@@ -46,7 +33,6 @@ document.getElementById('message-input').addEventListener('keyup', function(even
   }
 });
 
-// onclick={window.changeVideo}
 document.getElementById('message-submit').onclick = () => {
   const messageBox = document.getElementById('message-input');
   const newText = messageBox.value;
@@ -54,12 +40,10 @@ document.getElementById('message-submit').onclick = () => {
     return;
   }
   messageBox.value = '';
-  console.log('heres the newText: ' + newText);
   const addedMessage = {
     user: username,
     body: newText,
   };
-  console.log(`heres the new message: ${addedMessage}`);
   socket.emit('message', addedMessage);
   const displayMessage = document.createElement('div');
   displayMessage.setAttribute('class', 'message');
@@ -79,36 +63,4 @@ document.getElementById('message-submit').onclick = () => {
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
   }
   chatContainer.append(displayMessage);
-  // this.setState({
-  //   messages: [...this.state.messages, {
-  //     user: this.state.currentUser,
-  //     body: newMessage,
-  //   }],
-  // });
 };
-
-// App.propTypes = {
-//   url: PropTypes.string,
-//   changeVideo: PropTypes.func,
-// };
-
-// App.defaultProps = {
-//   url: 'https://www.youtube.com/embed/IY9YNF5MMQo',
-//   changeVideo,
-// };
-
-// render() {
-//   console.log(`heres thises changeVideo: ${this.changeVideo}`);
-//   return (
-//     <div>
-//       <UrlSubmission changeVideo={this.changeVideo.bind(this)} />
-//       {/* <VideoDisplay url={this.state.url} /> */}
-//       <ChatInput addMessage={this.addMessage.bind(this)} />
-//       <ChatContainer messages={this.state.messages}/>
-//     </div>
-//   );
-// }
-
-console.log('here i am in app!');
-
-// not exporting anything at the moment
