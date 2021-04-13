@@ -112,3 +112,15 @@ h1 {
 iframe {
   background-color: black;
 }
+
+#title {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-size: 40px;
+  color: white;
+  font-family: 'Marck Script', cursive;
+}
+
+.on-black {
+  color: white;
+}
