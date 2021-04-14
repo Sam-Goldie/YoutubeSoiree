@@ -50,7 +50,7 @@ h1 {
 
 #video-container {
   display: grid;
-  grid-template-columns: auto 50px 200px;
+  grid-template-columns: auto 200px 50px;
   grid-template-rows: 25px auto 25px 25px;
   grid-area: 2 / 1 / 5 / 2;
   width: 1280px;
@@ -59,7 +59,8 @@ h1 {
 
 #submit-input {
   display: inline;
-  margin-top: 30px;
+  height: 25px;
+  margin-top: 25px;
 }
 
 #submit-box {
@@ -72,15 +73,14 @@ h1 {
 
 #message-submit {
   margin-left: 4px;
-  grid-area: 3 / 2 / 4 / 3;
-  width: fit-content;
+  grid-area: 3 / 3 / 3 / 4;
+  width: 45px;
   height: 25px;
-  border-radius: 2px;
 }
 
 #message-input {
   margin-left: 5px;
-  grid-area: 3 / 3 / 3 / 4;
+  grid-area: 3 / 2 / 4 / 3;
   border-radius: 2px;
 }
 
@@ -150,4 +150,10 @@ button {
 
 svg {
   display: inline;
+}
+
+#url-submit {
+  position: relative;
+  height: 31px;
+  top: 7px;
 }
