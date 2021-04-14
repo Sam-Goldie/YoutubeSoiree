@@ -9,9 +9,9 @@ html {
   grid-template-columns: 300px minmax(640px, 1280px) 150px;
 }
 
-h1 {
+/* h1 {
   grid-area: 1 / 1 / 2 / 2;
-}
+} */
 
 #username-modal {
   display: inline;
@@ -42,19 +42,30 @@ h1 {
   padding: 5px;
 }
 
-#fullscreen-toggle {
-  grid-area: 1 / 2 / 2 / 3;
-  width: 30px;
-  margin-left: 3px;
-}
-
 #video-container {
   display: grid;
-  grid-template-columns: auto 200px 50px;
-  grid-template-rows: 25px auto 25px 25px;
+  grid-template-columns: auto 275px;
+  grid-template-rows: 50px auto 30px;
   grid-area: 2 / 1 / 5 / 2;
   width: 1280px;
   height: 720px;
+}
+
+#chatbar {
+  display: grid;
+  grid-area: 3 / 2 / 4 / 3;
+  grid-template-columns: 30px 200px 45px;
+}
+
+#fullscreen-header {
+  margin-top: -5px;
+  margin-left: 5px;
+  display: inline-flex;
+  text-align: center;
+  text-justify: center;
+  grid-area: 1 / 2 / 2 / 3;
+  color: white;
+  font-family: 'Marck Script', cursive;
 }
 
 #submit-input {
@@ -72,16 +83,22 @@ h1 {
 }
 
 #message-submit {
-  margin-left: 4px;
-  grid-area: 3 / 3 / 3 / 4;
+  margin-left: 1px;
+  grid-area: 1 / 3 / 2 / 4;
   width: 45px;
   height: 25px;
 }
 
 #message-input {
   margin-left: 5px;
-  grid-area: 3 / 2 / 4 / 3;
+  grid-area: 1 / 2 / 2 / 3;
   border-radius: 2px;
+}
+
+#fullscreen-toggle {
+  grid-area: 1 / 1 / 2 / 2;
+  width: 30px;
+  margin-left: 3px;
 }
 
 #chat-container {

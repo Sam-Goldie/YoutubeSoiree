@@ -33,8 +33,10 @@ function onPlayerReady(event) {
           console.log(err);
         }
       })
+      // document.getElementById('fullscreen-header').style.display = 'inline';
     } else {
       document.exitFullscreen();
+      // document.getElementById('fullscreen-header').style.display = 'none';
     }
   });
 }
