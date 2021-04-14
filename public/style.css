@@ -44,7 +44,7 @@ h1 {
 
 #fullscreen-toggle {
   grid-area: 1 / 2 / 2 / 3;
-  width: fit-content;
+  width: 30px;
   margin-left: 3px;
 }
 
@@ -133,7 +133,7 @@ button {
 
 ::-webkit-scrollbar {
   color: white;
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -146,4 +146,8 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+svg {
+  display: inline;
 }

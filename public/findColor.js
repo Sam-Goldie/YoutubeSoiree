@@ -1,5 +1,5 @@
 const userColors = {};
-const hexChars = '0123456789ABCDEF';
+// const hexChars = '0123456789ABCDEF';
 
 const findColor = (username) => {
   const color = userColors[username];
