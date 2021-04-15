@@ -15,7 +15,9 @@ html {
 
 #username-modal {
   display: inline;
-  background-color: lightblue;
+  background-color: palegoldenrod;
+  font-family: 'Marck Script', cursive;
+  font-size: 20px;
   border-radius: 3px;
   height: 180px;
   width: 220px;
@@ -35,6 +37,7 @@ html {
 
 #username-submit {
   margin: 4px;
+  font-family: 'Marck Script', cursive;
 }
 
 #username-instruction {
@@ -45,7 +48,7 @@ html {
 #video-container {
   display: grid;
   grid-template-columns: auto 275px;
-  grid-template-rows: 50px auto 30px;
+  grid-template-rows: 50px auto 25px;
   grid-area: 2 / 1 / 5 / 2;
   width: 1280px;
   height: 720px;
@@ -53,13 +56,14 @@ html {
 
 #chatbar {
   display: grid;
+  margin-top: -13px;
   grid-area: 3 / 2 / 4 / 3;
   grid-template-columns: 30px 200px 45px;
 }
 
 #fullscreen-header {
   margin-top: -5px;
-  margin-left: 5px;
+  margin-left: 8px;
   display: inline-flex;
   text-align: center;
   text-justify: center;
@@ -86,19 +90,24 @@ html {
   margin-left: 1px;
   grid-area: 1 / 3 / 2 / 4;
   width: 45px;
-  height: 25px;
+  height: 28px;
+  margin-top: 1px;
 }
 
 #message-input {
   margin-left: 5px;
   grid-area: 1 / 2 / 2 / 3;
   border-radius: 2px;
+  height: 24px;
+  font-size: 16px;
 }
 
 #fullscreen-toggle {
   grid-area: 1 / 1 / 2 / 2;
+  height: 28px;
   width: 30px;
   margin-left: 3px;
+  margin-top: 1px;
 }
 
 #chat-container {
