@@ -25,7 +25,7 @@ Future features:
 
 Fork or clone this repo down. Once on your local environment, I recommend installing dependencies with "npm install"
 
-To start the nodemon server: npm run dev
+To start the nodemon server: npm start
 
 Default port for the app is 3000.
 
