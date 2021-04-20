@@ -24,17 +24,36 @@ function onYouTubeIframeAPIReady(url = 'sutxc3yGWEU') {
   });
 }
 
+const videoContainer = document.getElementById('video-container');
+function resizeVideoContainer() {
+  console.log('resizing now!');
+  videoContainer.style.setProperty('width', window.innerWidth.toString());
+  videoContainer.style.setProperty('height', window.innerHeight.toString());
+}
+
 function onPlayerReady(event) {
   event.target.playVideo();
   document.getElementById('fullscreen-toggle').addEventListener('click', function() {
     if (!document.fullscreenElement) {
-      document.getElementById('video-container').requestFullscreen().catch(function(err) {
+      document.getElementById('video-container').requestFullscreen().then(function(err) {
         if (err) {
-          console.log(err);
+          throw err;
         }
+        resizeVideoContainer();
+      }).catch(function(err) {
+        console.log(err);
       })
+      // document.getElementById('fullscreen-header').style.display = 'inline';
     } else {
-      document.exitFullscreen();
+      document.exitFullscreen().then(function(err) {
+        if (err) {
+          throw err;
+        }
+        resizeVideoContainer();
+      }).catch(function(err) {
+        console.log(err);
+      })
+      // document.getElementById('fullscreen-header').style.display = 'none';
     }
   });
 }

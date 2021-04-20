@@ -58,9 +58,12 @@ document.getElementById('message-submit').onclick = () => {
   displayBody.append(`  ${addedMessage.body}`);
   displayMessage.append(displayName);
   displayMessage.append(displayBody);
-  if (jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]).offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
-    chatContainer.append(displayMessage);
-    chatContainer.scrollTo(0, chatContainer.scrollHeight);
+  const bottomElement = jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]);
+  if (bottomElement.length) {
+    if (bottomElement.offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
+      chatContainer.append(displayMessage);
+      chatContainer.scrollTo(0, chatContainer.scrollHeight);
+    }
   }
   chatContainer.append(displayMessage);
 };
