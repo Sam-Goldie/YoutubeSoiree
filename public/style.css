@@ -13,6 +13,15 @@ html {
   grid-area: 1 / 1 / 2 / 2;
 } */
 
+emoji-picker {
+  display:inline-flex;
+  grid-area: 4 / 2 / 5 / 3;
+  --num-columns: 6;
+  background-color: firebrick;
+  width: 100%;
+  height: 100%;
+}
+
 #username-modal {
   display: inline;
   background-color: palegoldenrod;
@@ -48,7 +57,7 @@ html {
 #video-container {
   margin-bottom: 0px;
   display: grid;
-  grid-template-rows: 50px 50px auto 25px;
+  grid-template-rows: 50px 50px auto 70px 25px;
   grid-template-columns: auto 275px;
   width: 90vw;
   height: 55vw;
@@ -66,8 +75,8 @@ html {
 #chatbar {
   margin-top: -0.3vw;
   display: grid;
-  grid-area: 4 / 2 / 5 / 3;
-  grid-template-columns: 30px 200px 45px;
+  grid-area: 5 / 2 / 6 / 3;
+  grid-template-columns: 30px 200px 45px 50px;
 }
 
 #fullscreen-header {
@@ -121,11 +130,12 @@ html {
 }
 
 #chat-container {
+  display: inline-block;
   padding-top: 3px;
   padding-left: 2px;
   overflow-y: scroll;
   background-color: black;
-  grid-area: 3 / 2 / 4 / 3;
+  grid-area: 3 / 2 / 5 / 3;
   border-radius: 3px;
 }
 
