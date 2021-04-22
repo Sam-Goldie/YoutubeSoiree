@@ -39,7 +39,8 @@ const server = app.listen(port, () => {
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
-  socket.emit('message', 'HELLO');
+  console.log('connected to client');
+  socket.emit('message', {user: 'server', body: 'HELLO, FRIEND!'});
   socket.on('message', (message) => {
     message.body = escapeInput(message.body);
     console.log('a message came through');

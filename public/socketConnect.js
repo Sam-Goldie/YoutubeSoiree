@@ -14,7 +14,7 @@ socket.on('message', (data) => {
   displayMessage.setAttribute('class', 'message');
   displayMessage.append(displayName);
   displayMessage.append(displayBody);
-  if (jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]).offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
+  if (jQuery(chatContainer.getElementsByTagName('div').length) > 0 && jQuery(chatContainer.getElementsByTagName('div')[chatContainer.getElementsByTagName('div').length - 1]).offset().top <= chatContainer.offsetTop + chatContainer.offsetHeight) {
     chatContainer.append(displayMessage);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
   }

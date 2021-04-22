@@ -2,14 +2,18 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' nonce-ZVfuoinoZbrFBxVyn4CkWYXO4d3B11iQ https://www.youtube.com; connect-src http://localhost:3000/socket.io/ ws://localhost:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'self' https://cdn.jsdelivr.net/npm/emoji-picker-element@%5E1/ https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js http://localhost:3000/socket.io/socket.io.js https://code.jquery.com/jquery-3.6.0.min.js http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com; style-src http://localhost:3000/style.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.youtube.com; connect-src http://localhost:3000/socket.io/ ws://localhost:3000/socket.io/; img-src https://i.ytimg.com; script-src-elem 'nonce-ZddYbNiM9jjSURmbUAHtaa8C9fEvxwJN' 'self' https://cdn.jsdelivr.net/npm/emoji-picker-element@%5E1/ https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js http://localhost:3000/socket.io/socket.io.js https://code.jquery.com/jquery-3.6.0.min.js http://localhost:3000/socket.io/socket.io.js https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js https://www.youtube.com; style-src http://localhost:3000/style.css https://fonts.googleapis.com/ https://allfont.net/cache/css/lucida-sans-unicode.css http://allfont.net/cache/css/lucida-sans-unicode.css https://allfont.net/allfont.css; font-src https://fonts.gstatic.com/s/marckscript/v11/ http://allfont.ru/cache/fonts/lucida-sans-unicode_2a583ed38429be05c294ba499ae6d687.woff http://allfont.ru/cache/fonts/lucida-sans-unicode_2a583ed38429be05c294ba499ae6d687.ttf http://allfont.ru/cache/fonts">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="https://allfont.net/allfont.css?fonts=lucida-sans-unicode" rel="stylesheet" type="text/css" />
     <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+    <script type="module" nonce='ZddYbNiM9jjSURmbUAHtaa8C9fEvxwJN'>
+    console.log('the nonce was accepted!');
+    const Picker = window.Picker;
+    const picker = new Picker();
+    document.body.appendChild(picker);
+</script>
   </head>
   <body>
     <div id='username-modal'>
@@ -50,10 +54,5 @@
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src= "./onYoutubeIframeAPIReady.js"></script>
     <script type="module" defer src="./index.js"></script>
-    <script nonce=ZVfuoinoZbrFBxVyn4CkWYXO4d3B11iQ>
-    import { Picker } from 'emoji-picker-element';
-    const picker = new Picker();
-    document.body.appendChild(picker);
-</script>
   </body>
 </html>
