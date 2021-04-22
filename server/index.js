@@ -20,11 +20,7 @@ const newNonce = nonceMaker();
 
 let htmlContent = fs.readFileSync('indexTemplate.html', 'utf-8');
 htmlContent = htmlContent.replace("<div id='emoji-script'></div>",
-`<script type="module" nonce='${newNonce}'>
-    console.log('the nonce was accepted!');
-    const Picker = window.Picker;
-    const picker = new Picker();
-    document.body.appendChild(picker);
+`<script type="module" nonce='${newNonce}' defer src="./createEmojiPicker.js"'>
 </script>`
 );
 htmlContent = htmlContent.replace(`script-src-elem`, `script-src-elem 'nonce-${newNonce}'`);
