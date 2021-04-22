@@ -3,6 +3,17 @@ html {
   font-family: 'Lucida Sans Unicode', arial;
 }
 
+@font-face {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  src:url('https://www.wfonts.com/download/data/2014/11/24/lucida-sans-unicode/Lucida%20Sans%20Unicode.ttf');
+}
+
+@font-face {
+  font-family: 'Marck Script', cursive;
+  src:url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
+}
+
+
 /* #app {
   display: grid;
   grid-template-rows: 80px 60px 60px minmax(360px, 720px);
@@ -102,7 +113,7 @@ emoji-picker {
 }
 
 #video-player {
-  grid-area: 1 / 1 / 5 / 2;
+  grid-area: 1 / 1 / 6 / 2;
 }
 
 #message-submit {

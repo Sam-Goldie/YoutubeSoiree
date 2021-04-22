@@ -19,16 +19,15 @@ const nonceMaker = () => {
 const newNonce = nonceMaker();
 
 let htmlContent = fs.readFileSync('indexTemplate.html', 'utf-8');
-console.log(htmlContent);
-htmlContent = htmlContent.replace('<emoji-picker></emoji-picker>',
-`<script nonce=${newNonce}>
-    import { Picker } from 'emoji-picker-element';
+htmlContent = htmlContent.replace("<div id='emoji-script'></div>",
+`<script type="module" nonce='${newNonce}'>
+    console.log('the nonce was accepted!');
+    const Picker = window.Picker;
     const picker = new Picker();
     document.body.appendChild(picker);
 </script>`
 );
-htmlContent = htmlContent.replace(`default-src 'self'`, `default-src 'self' nonce-${newNonce}`);
-console.log(htmlContent);
+htmlContent = htmlContent.replace(`script-src-elem`, `script-src-elem 'nonce-${newNonce}'`);
 fs.writeFileSync('./public/index.html', htmlContent, 'utf-8');
 
 app.use(express.static('public'));
