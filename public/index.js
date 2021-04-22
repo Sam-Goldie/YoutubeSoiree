@@ -67,3 +67,9 @@ document.getElementById('message-submit').onclick = () => {
   }
   chatContainer.append(displayMessage);
 };
+
+Array.from(document.getElementsByClassName('emoji')).forEach((event) => {
+  event.addEventListener('click', (e) => {
+    document.getElementById('message-input').value += e.currentTarget.innerText;
+  })
+})

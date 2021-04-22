@@ -146,8 +146,12 @@ emoji-picker {
   padding-left: 2px;
   overflow-y: scroll;
   background-color: black;
-  grid-area: 3 / 2 / 5 / 3;
+  grid-area: 3 / 2 / 4 / 3;
   border-radius: 3px;
+}
+
+#emoji-picker {
+  grid-area: 4 / 2 / 5 / 3;
 }
 
 .message {
