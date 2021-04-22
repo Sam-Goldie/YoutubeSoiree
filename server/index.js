@@ -2,29 +2,37 @@ const express = require('express');
 const socketIO = require('socket.io');
 const escapeInput = require('./escapeInput.js');
 const fs = require('fs');
+const emojis = require('./emojis.js');
 
 const port = 3000;
 
 const app = express();
 
-const nonceMaker = () => {
-  const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let nonce = '';
-  for (let i = 0; i < 32; i++) {
-    nonce += validChars[Math.floor(Math.random() * validChars.length)];
-  }
-  return nonce;
-}
+// const nonceMaker = () => {
+//   const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//   let nonce = '';
+//   for (let i = 0; i < 32; i++) {
+//     nonce += validChars[Math.floor(Math.random() * validChars.length)];
+//   }
+//   return nonce;
+// }
 
 // const newNonce = nonceMaker();
 
-// let htmlContent = fs.readFileSync('indexTemplate.html', 'utf-8');
-// htmlContent = htmlContent.replace("<div id='emoji-script'></div>",
-// `<script type="module" nonce='${newNonce}' defer src="./createEmojiPicker.js"'>
-// </script>`
-// );
-// htmlContent = htmlContent.replace(`script-src-elem`, `script-src-elem 'nonce-${newNonce}'`);
-// fs.writeFileSync('./public/index.html', htmlContent, 'utf-8');
+const populateEmojiPicker = (emojis) => {
+  console.log('emoji picker is being populated with this many emojis: ' + emojis.length);
+  let htmlContent = fs.readFileSync('indexTemplate.html', 'utf-8');
+  let emojiDivs = '';
+  for (let emoji of emojis) {
+    emojiDivs += `\n<div class="emoji">${emoji}</div>`
+  }
+  console.log(emojiDivs);
+  htmlContent = htmlContent.replace("<div id='emoji-picker'></div>", `<div id='emoji-picker'>${emojiDivs}</div>`);
+  console.log('heres the htmlContent: ' + htmlContent);
+  fs.writeFileSync('./public/index.html', htmlContent, 'utf-8');
+}
+
+populateEmojiPicker(emojis);
 
 app.use(express.static('public'));
 

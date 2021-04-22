@@ -71,5 +71,6 @@ document.getElementById('message-submit').onclick = () => {
 Array.from(document.getElementsByClassName('emoji')).forEach((event) => {
   event.addEventListener('click', (e) => {
     document.getElementById('message-input').value += e.currentTarget.innerText;
+    document.getElementById('message-input').focus();
   })
-})
+});
