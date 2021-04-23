@@ -44,13 +44,16 @@ const io = socketIO(server);
 
 io.on('connection', (socket) => {
   console.log('connected to client');
-  socket.emit('message', {user: 'server', body: 'HELLO, FRIEND!'});
   socket.on('message', (message) => {
     message.body = escapeInput(message.body);
     console.log('a message came through');
     console.log(message.body);
     socket.broadcast.emit('message', message);
   });
+  socket.on('signin', (username) => {
+    socket.emit('message', {user: 'Valet', body: `Welcome, ${username}. May I take your coat?`});
+    socket.broadcast.emit('message', {user: 'Valet', body: `${username} has entered the ballroom`})
+  })
   socket.on('play', (timecode) => {
     console.log('play command received!');
     socket.broadcast.emit('play', timecode);

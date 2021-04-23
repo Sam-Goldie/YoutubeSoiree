@@ -10,11 +10,15 @@ document.getElementById('username-submit').onclick = () => {
     username = newUsername;
     document.getElementById('username-modal').style.display = 'none';
     userColor = findColor(newUsername);
+    socket.emit('signin', newUsername);
   }
 }
 
 document.getElementById('url-submit').onclick = () => {
   let newVideoId = document.getElementById('submit-input').value;
+  if (newVideoId === '') {
+    return;
+  }
   document.getElementById('submit-input').value = '';
   newVideoId = newVideoId.substring(newVideoId.lastIndexOf('/') + 1);
   if (newVideoId.includes('?')) {

@@ -110,6 +110,7 @@ emoji-picker {
   margin-left: 6px;
   display: inline;
   height: 25px;
+  margin-bottom: 6px;
 }
 
 #submit-box {
@@ -232,18 +233,14 @@ button {
   background: #555;
 }
 
-#emoji-picker ::-webkit-scrollbar {
-  width: 3px;
-}
-
 svg {
   display: inline;
 }
 
 #url-submit {
   position: relative;
-  height: 26px;
-  top: 7px;
+  height: 28px;
+  top: 5px;
 }
 
 #url-request {
