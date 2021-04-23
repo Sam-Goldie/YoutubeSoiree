@@ -1,10 +1,38 @@
 const express = require('express');
 const socketIO = require('socket.io');
 const escapeInput = require('./escapeInput.js');
+const fs = require('fs');
+const emojis = require('./emojis.js');
 
 const port = 3000;
 
 const app = express();
+
+// const nonceMaker = () => {
+//   const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+//   let nonce = '';
+//   for (let i = 0; i < 32; i++) {
+//     nonce += validChars[Math.floor(Math.random() * validChars.length)];
+//   }
+//   return nonce;
+// }
+
+// const newNonce = nonceMaker();
+
+const populateEmojiPicker = (emojis) => {
+  console.log('emoji picker is being populated with this many emojis: ' + emojis.length);
+  let htmlContent = fs.readFileSync('indexTemplate.html', 'utf-8');
+  let emojiDivs = '';
+  for (let emoji of emojis) {
+    emojiDivs += `\n<div class="emoji">${emoji}</div>`
+  }
+  console.log(emojiDivs);
+  htmlContent = htmlContent.replace("<div id='emoji-picker'></div>", `<div id='emoji-picker'>${emojiDivs}</div>`);
+  console.log('heres the htmlContent: ' + htmlContent);
+  fs.writeFileSync('./public/index.html', htmlContent, 'utf-8');
+}
+
+populateEmojiPicker(emojis);
 
 app.use(express.static('public'));
 
@@ -15,13 +43,17 @@ const server = app.listen(port, () => {
 const io = socketIO(server);
 
 io.on('connection', (socket) => {
-  socket.emit('message', 'HELLO');
+  console.log('connected to client');
   socket.on('message', (message) => {
     message.body = escapeInput(message.body);
     console.log('a message came through');
     console.log(message.body);
     socket.broadcast.emit('message', message);
   });
+  socket.on('signin', (username) => {
+    socket.emit('message', {user: 'Valet', body: `Welcome, ${username}. May I take your coat?`});
+    socket.broadcast.emit('message', {user: 'Valet', body: `${username} has entered the ballroom`})
+  })
   socket.on('play', (timecode) => {
     console.log('play command received!');
     socket.broadcast.emit('play', timecode);
