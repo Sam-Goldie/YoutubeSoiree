@@ -14,8 +14,7 @@ Features include:
 * A field to submit youtube video links to change what's playing
 
 Priority changes to come:
-* Deployment + the ability to host more than one watch party similtaneously
-* An optional full-screen + chat mode that will facilitate communication without disrupting the show
+* The ability to host more than one watch party similtaneously
 
 Future features:
 * Implementing in-app youtube search for greater convenience
@@ -25,7 +24,7 @@ Future features:
 
 Fork or clone this repo down. Once on your local environment, I recommend installing dependencies with "npm install"
 
-To start the nodemon server: npm run dev
+To start the nodemon server: npm start
 
 Default port for the app is 3000.
 
