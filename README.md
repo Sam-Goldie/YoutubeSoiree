@@ -9,7 +9,7 @@ Trying to make the most of time spent with friends can be tough during a pandemi
 # Features
 
 Features include: 
-* Syncronized playback (obviously)
+* Synchronized playback (obviously)
 * A text chat feature
 * A field to submit youtube video links to change what's playing
 
