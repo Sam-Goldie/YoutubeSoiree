@@ -1,8 +1,8 @@
 const express = require('express');
-const socketIO = require('socket.io');
 const escapeInput = require('./escapeInput.js');
 const fs = require('fs');
 const emojis = require('./emojis.js');
+const { support } = require('jquery');
 
 const port = 3000;
 
@@ -34,13 +34,26 @@ const populateEmojiPicker = (emojis) => {
 
 populateEmojiPicker(emojis);
 
+app.set('views', './views');
+app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
+
+const rooms = {};
+
+app.get('/', (req, res) => {
+  res.render('index', { rooms });
+})
+
+app.get('/:room', (req, res) => {
+  res.render('room', { roomName: req.params.room});
+})
 
 const server = app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
 });
 
-const io = socketIO(server);
+const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
   console.log('connected to client');
