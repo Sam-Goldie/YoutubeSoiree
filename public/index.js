@@ -3,11 +3,15 @@ import findColor from './findColor.js';
 
 let username;
 let userColor;
+let room;
 
 document.getElementById('username-submit').onclick = () => {
   const newUsername = document.getElementById('username-entry').value;
   if (newUsername !== '') {
     username = newUsername;
+    const usp = new URLSearchParams(document.location.search);
+    room = usp.get('id');
+    console.log('this is room: ' + room);
     document.getElementById('username-modal').style.display = 'none';
     userColor = findColor(newUsername);
     socket.emit('signin', newUsername);

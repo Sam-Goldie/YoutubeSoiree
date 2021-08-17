@@ -26,27 +26,31 @@ const populateEmojiPicker = (emojis) => {
   for (let emoji of emojis) {
     emojiDivs += `\n<div class="emoji">${emoji}</div>`
   }
-  console.log(emojiDivs);
+  // console.log(emojiDivs);
   htmlContent = htmlContent.replace("<div id='emoji-picker'></div>", `<div id='emoji-picker'>${emojiDivs}</div>`);
-  console.log('heres the htmlContent: ' + htmlContent);
+  // console.log('heres the htmlContent: ' + htmlContent);
   fs.writeFileSync('./public/index.html', htmlContent, 'utf-8');
 }
 
 populateEmojiPicker(emojis);
 
-app.set('views', './views');
-app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 
 const rooms = {};
 
-app.get('/', (req, res) => {
-  res.render('index', { rooms });
-})
+let queryString;
+
+// app.get('/', (req, res) => {
+//   res.render('index', { rooms });
+//   queryString = window.location.search;
+//   console.log(queryString);
+// })
 
 app.get('/:room', (req, res) => {
   res.render('room', { roomName: req.params.room});
+  queryString = window.location.search;
+  console.log(queryString);
 })
 
 const server = app.listen(port, () => {
@@ -56,11 +60,11 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
-  console.log('connected to client');
+
   socket.on('message', (message) => {
     message.body = escapeInput(message.body);
     console.log('a message came through');
-    console.log(message.body);
+    // console.log(message.body);
     socket.broadcast.emit('message', message);
   });
   socket.on('signin', (username) => {
