@@ -60,16 +60,20 @@ const server = app.listen(port, () => {
 const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
-
+  let room;
   socket.on('message', (message) => {
     message.body = escapeInput(message.body);
     console.log('a message came through');
+    console.log('and room is: ' + room);
     // console.log(message.body);
-    socket.broadcast.emit('message', message);
+    socket.to(room).broadcast.emit('message', message);
   });
-  socket.on('signin', (username) => {
+  socket.on('signin', (username, roomid) => {
+    room = roomid;
+    socket.join(roomid);
     socket.emit('message', {user: 'Valet', body: `Welcome, ${username}. May I take your coat?`});
-    socket.broadcast.emit('message', {user: 'Valet', body: `${username} has entered the ballroom`})
+    socket.to(roomid).broadcast.emit('message', {user: 'Valet', body: `${username} has entered the ballroom`});
+    console.log('room is: ' + room);
   })
   socket.on('play', (timecode) => {
     console.log('play command received!');

@@ -14,7 +14,7 @@ document.getElementById('username-submit').onclick = () => {
     console.log('this is room: ' + room);
     document.getElementById('username-modal').style.display = 'none';
     userColor = findColor(newUsername);
-    socket.emit('signin', newUsername);
+    socket.emit('signin', newUsername, room);
   }
 }
 
