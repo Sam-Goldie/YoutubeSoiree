@@ -77,15 +77,15 @@ io.on('connection', (socket) => {
   })
   socket.on('play', (timecode) => {
     console.log('play command received!');
-    socket.broadcast.emit('play', timecode);
+    socket.to(room).broadcast.emit('play', timecode);
   });
   socket.on('pause', (timecode) => {
     console.log('pause command received!');
-    socket.broadcast.emit('pause', timecode);
+    socket.to(room).broadcast.emit('pause', timecode);
   });
   socket.on('url', (url) => {
     console.log('new url received!');
-    socket.broadcast.emit('url', url);
+    socket.to(room).broadcast.emit('url', url);
   });
 });
 
