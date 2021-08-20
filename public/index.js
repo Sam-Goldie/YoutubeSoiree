@@ -4,17 +4,18 @@ import findColor from './findColor.js';
 let username;
 let userColor;
 let room;
+let password;
 
 document.getElementById('username-submit').onclick = () => {
   const newUsername = document.getElementById('username-entry').value;
+  const code = document.getElementById('password-entry').value;
   if (newUsername !== '') {
     username = newUsername;
     const usp = new URLSearchParams(document.location.search);
     room = usp.get('id');
+    password = code;
     console.log('this is room: ' + room);
-    document.getElementById('username-modal').style.display = 'none';
-    userColor = findColor(newUsername);
-    socket.emit('signin', newUsername, room);
+    socket.emit('signin', newUsername, room, code);
   }
 }
 
@@ -34,6 +35,10 @@ document.getElementById('url-submit').onclick = () => {
   socket.emit('url', newVideoId);
   player.loadVideoById(newVideoId);
 };
+
+document.getElementById('create-room').onclick = () => {
+  socket.emit('room', document.getElementById('new-password').value);
+}
 
 document.getElementById('message-input').addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {

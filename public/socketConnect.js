@@ -2,6 +2,7 @@ import './autoscrollChat.js';
 import findColor from './findColor.js';
 
 socket.on('message', (data) => {
+  document.getElementById('username-modal').style.display = 'none';
   const displayName = document.createElement('div');
   displayName.setAttribute('class', 'chat-text username');
   displayName.style.color = findColor(data.user);
@@ -20,6 +21,10 @@ socket.on('message', (data) => {
   }
   chatContainer.append(displayMessage);
 });
+
+// socket.on('welcome', () => {
+//   document.getElementById('username-modal').style.display = 'none';
+// });
 
 socket.on('play', (timecode) => {
   player.playVideo();
