@@ -96,10 +96,12 @@ io.on('connection', (socket) => {
   });
   socket.on('room', (code) => {
     console.log('new room signal created');
-    rooms[idMaker()] = code;
+    const newId = idMaker();
+    rooms[newId] = code;
     password = code;
     socket.join(room);
-    console.log('number of rooms is: ' + Array.from(Object.keys(rooms)));
+    socket.emit('new-room', newId, code);
+    console.log('number of rooms is: ' + Array.from(Object.entries(rooms)));
   })
 });
 

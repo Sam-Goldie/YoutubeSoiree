@@ -13,6 +13,10 @@ html {
   src:url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 }
 
+#new-room-modal {
+  color: white;
+}
+
 
 /* #app {
   display: grid;

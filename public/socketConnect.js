@@ -42,3 +42,17 @@ socket.on('seek', (timecode) => {
 socket.on('url', (url) => {
   player.loadVideoById(url);
 });
+
+socket.on('new-room', (roomid, password) => {
+  console.log('new room successfully created');
+  document.getElementById('username-modal').display = 'none';
+  document.getElementById('link-display').innerText = window.location.href + `?id=${roomid}`;
+  document.getElementById('password-display').innerText = password;
+  document.getElementById('new-room-modal').display = 'fixed';
+  window.onclick = function(event) {
+    if (event.target === document.getElementById('new-room-modal')) {
+      document.getElementById('new-room-modal').display = 'none';
+      document.getElementById('username-modal').display = 'fixed'
+    }
+  }
+})
