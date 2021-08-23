@@ -3,19 +3,26 @@ const escapeInput = require('./escapeInput.js');
 const fs = require('fs');
 const emojis = require('./emojis.js');
 const { support } = require('jquery');
+const path = require('path');
 
 const port = 3000;
 
 const app = express();
 
-// const nonceMaker = () => {
-//   const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-//   let nonce = '';
-//   for (let i = 0; i < 32; i++) {
-//     nonce += validChars[Math.floor(Math.random() * validChars.length)];
-//   }
-//   return nonce;
-// }
+const rooms = {};
+
+const idMaker = () => {
+  const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let id = '';
+  for (let i = 0; i < 6; i++) {
+    id += validChars[Math.floor(Math.random() * validChars.length)];
+  }
+  if (rooms[id]) {
+    return idMaker();
+  }
+  rooms[id] = true;
+  return id;
+}
 
 // const newNonce = nonceMaker();
 
@@ -37,8 +44,6 @@ populateEmojiPicker(emojis);
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 
-const rooms = {};
-
 let queryString;
 
 // app.get('/', (req, res) => {
@@ -47,10 +52,9 @@ let queryString;
 //   console.log(queryString);
 // })
 
-app.get('/:room', (req, res) => {
-  res.render('room', { roomName: req.params.room});
-  queryString = window.location.search;
-  console.log(queryString);
+app.get('/room/', (req, res) => {
+  console.log('here i am');
+  res.sendFile(path.resolve(__dirname, '../public'));
 })
 
 const server = app.listen(port, () => {
@@ -61,6 +65,7 @@ const io = require('socket.io')(server);
 
 io.on('connection', (socket) => {
   let room;
+  let password;
   socket.on('message', (message) => {
     message.body = escapeInput(message.body);
     console.log('a message came through');
@@ -68,12 +73,16 @@ io.on('connection', (socket) => {
     // console.log(message.body);
     socket.to(room).broadcast.emit('message', message);
   });
-  socket.on('signin', (username, roomid) => {
-    room = roomid;
-    socket.join(roomid);
-    socket.emit('message', {user: 'Valet', body: `Welcome, ${username}. May I take your coat?`});
-    socket.to(roomid).broadcast.emit('message', {user: 'Valet', body: `${username} has entered the ballroom`});
-    console.log('room is: ' + room);
+  socket.on('signin', (username, roomid, code) => {
+    console.log('about to sign them in');
+    if (code === rooms[roomid].password) {
+      console.log('signin confirmed');
+      room = roomid;
+      socket.join(roomid);
+      socket.emit('message', {user: 'Valet', body: `Welcome, ${username}. May I take your coat?`});
+      socket.to(roomid).broadcast.emit('message', {user: 'Valet', body: `${username} has entered the ballroom`});
+      console.log('room is: ' + room);
+    }
   })
   socket.on('play', (timecode) => {
     console.log('play command received!');
@@ -87,5 +96,15 @@ io.on('connection', (socket) => {
     console.log('new url received!');
     socket.to(room).broadcast.emit('url', url);
   });
+  socket.on('room', (code) => {
+    console.log('new room signal created');
+    const newId = idMaker();
+    rooms[newId] = {password: code, users: {}};
+    password = code;
+    socket.join(room);
+    socket.emit('new-room', newId, code);
+    console.log('newId is: ' + newId);
+    console.log('number of rooms is: ' + Array.from(Object.entries(rooms)));
+  })
 });
 
