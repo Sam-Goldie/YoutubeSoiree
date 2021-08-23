@@ -6,7 +6,6 @@ socket.on('message', (data) => {
   document.getElementById('username-modal').style.display = 'none';
   const displayName = document.createElement('div');
   displayName.setAttribute('class', 'chat-text username');
-  displayName.style.color = findColor(data.user);
   displayName.append(`${data.user}:`)
   const displayBody = document.createElement('div');
   displayBody.setAttribute('class', 'chat-text');
@@ -20,6 +19,7 @@ socket.on('message', (data) => {
     chatContainer.append(displayMessage);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
   }
+  displayName.style.color = findColor(data.user);
   chatContainer.append(displayMessage);
 });
 
