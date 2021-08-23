@@ -9,7 +9,7 @@ const port = 3000;
 
 const app = express();
 
-const rooms = {123: 'apple'};
+const rooms = {};
 
 const idMaker = () => {
   const validChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -74,7 +74,9 @@ io.on('connection', (socket) => {
     socket.to(room).broadcast.emit('message', message);
   });
   socket.on('signin', (username, roomid, code) => {
-    if (code === rooms[roomid]) {
+    console.log('about to sign them in');
+    if (code === rooms[roomid].password) {
+      console.log('signin confirmed');
       room = roomid;
       socket.join(roomid);
       socket.emit('message', {user: 'Valet', body: `Welcome, ${username}. May I take your coat?`});
@@ -97,7 +99,7 @@ io.on('connection', (socket) => {
   socket.on('room', (code) => {
     console.log('new room signal created');
     const newId = idMaker();
-    rooms[newId] = code;
+    rooms[newId] = {password: code, users: {}};
     password = code;
     socket.join(room);
     socket.emit('new-room', newId, code);

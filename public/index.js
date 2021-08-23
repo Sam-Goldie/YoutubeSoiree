@@ -6,10 +6,6 @@ let userColor;
 let room;
 let password;
 
-setInterval(function() {
-  console.log(window.location.href);
-}, 100)
-
 document.getElementById('username-submit').onclick = () => {
   const newUsername = document.getElementById('username-entry').value;
   const code = document.getElementById('password-entry').value;
