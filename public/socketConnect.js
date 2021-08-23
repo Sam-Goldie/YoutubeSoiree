@@ -45,10 +45,11 @@ socket.on('url', (url) => {
 
 socket.on('new-room', (roomid, password) => {
   console.log('new room successfully created');
-  document.getElementById('username-modal').display = 'none';
+  window.location.href = window.location.href + `?id=${roomid}`;
+  document.getElementById('username-modal').style.display = 'none';
   document.getElementById('link-display').innerText = window.location.href + `?id=${roomid}`;
   document.getElementById('password-display').innerText = password;
-  document.getElementById('new-room-modal').display = 'fixed';
+  document.getElementById('new-room-modal').style.display = 'initial';
   window.onclick = function(event) {
     if (event.target === document.getElementById('new-room-modal')) {
       document.getElementById('new-room-modal').display = 'none';

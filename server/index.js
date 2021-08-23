@@ -101,6 +101,7 @@ io.on('connection', (socket) => {
     password = code;
     socket.join(room);
     socket.emit('new-room', newId, code);
+    console.log('newId is: ' + newId);
     console.log('number of rooms is: ' + Array.from(Object.entries(rooms)));
   })
 });

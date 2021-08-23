@@ -15,6 +15,7 @@ html {
 
 #new-room-modal {
   color: white;
+  display: none;
 }
 
 
