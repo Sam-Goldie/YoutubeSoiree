@@ -23,10 +23,6 @@ socket.on('message', (data) => {
   chatContainer.append(displayMessage);
 });
 
-// socket.on('welcome', () => {
-//   document.getElementById('username-modal').style.display = 'none';
-// });
-
 socket.on('play', (timecode) => {
   player.playVideo();
 });
@@ -46,11 +42,9 @@ socket.on('url', (url) => {
 
 socket.on('new-room', (roomid, password) => {
   console.log('new room successfully created');
-  const prevContext = window.location.href;
   window.location.href = window.location.href + `?id=${roomid}`;
   console.log('window location href is now: ' + window.location.href);
   document.getElementById('username-modal').style.display = 'none';
-  // document.getElementById('link-display').innerText = window.location.href + `?id=${roomid}`;
   console.log('what is password: ' + password);
   console.log('what is the value at password-entry: ' + document.getElementById('password-entry').value);
   document.getElementById('password-entry').value = password;

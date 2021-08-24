@@ -11,6 +11,7 @@ document.getElementById('username-submit').onclick = () => {
   const code = document.getElementById('password-entry').value;
   if (newUsername !== '') {
     username = newUsername;
+    userColor = findColor(username);
     const usp = new URLSearchParams(document.location.search);
     room = usp.get('id');
     password = code;

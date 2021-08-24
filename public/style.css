@@ -18,17 +18,6 @@ html {
   display: none;
 }
 
-
-/* #app {
-  display: grid;
-  grid-template-rows: 80px 60px 60px minmax(360px, 720px);
-  grid-template-columns: 300px minmax(640px, 1280px) 150px;
-} */
-
-/* h1 {
-  grid-area: 1 / 1 / 2 / 2;
-} */
-
 emoji-picker {
   display:inline-flex;
   grid-area: 4 / 2 / 5 / 3;
@@ -252,8 +241,3 @@ svg {
   color: white;
   margin-left: 6px;
 }
-
-
-/* #video-container:fullscreen #video-player {
-
-} */

@@ -2,7 +2,6 @@ const express = require('express');
 const escapeInput = require('./escapeInput.js');
 const fs = require('fs');
 const emojis = require('./emojis.js');
-const { support } = require('jquery');
 const path = require('path');
 
 const port = 3000;
@@ -24,38 +23,20 @@ const idMaker = () => {
   return id;
 }
 
-// const newNonce = nonceMaker();
-
 const populateEmojiPicker = (emojis) => {
-  console.log('emoji picker is being populated with this many emojis: ' + emojis.length);
   let htmlContent = fs.readFileSync('indexTemplate.html', 'utf-8');
   let emojiDivs = '';
   for (let emoji of emojis) {
     emojiDivs += `\n<div class="emoji">${emoji}</div>`
   }
-  // console.log(emojiDivs);
   htmlContent = htmlContent.replace("<div id='emoji-picker'></div>", `<div id='emoji-picker'>${emojiDivs}</div>`);
-  // console.log('heres the htmlContent: ' + htmlContent);
   fs.writeFileSync('./public/index.html', htmlContent, 'utf-8');
-}
+};
 
 populateEmojiPicker(emojis);
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
-
-let queryString;
-
-// app.get('/', (req, res) => {
-//   res.render('index', { rooms });
-//   queryString = window.location.search;
-//   console.log(queryString);
-// })
-
-app.get('/room/', (req, res) => {
-  console.log('here i am');
-  res.sendFile(path.resolve(__dirname, '../public'));
-})
 
 const server = app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
@@ -70,7 +51,6 @@ io.on('connection', (socket) => {
     message.body = escapeInput(message.body);
     console.log('a message came through');
     console.log('and room is: ' + room);
-    // console.log(message.body);
     socket.to(room).broadcast.emit('message', message);
   });
   socket.on('signin', (username, roomid, code) => {
@@ -107,4 +87,3 @@ io.on('connection', (socket) => {
     console.log('number of rooms is: ' + Array.from(Object.entries(rooms)));
   })
 });
-
