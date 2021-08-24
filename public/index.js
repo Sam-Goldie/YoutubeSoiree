@@ -1,6 +1,5 @@
 import './socketConnect.js';
 import findColor from './findColor.js';
-import autoscrollChat from './autoscrollChat.js';
 
 let username;
 let userColor;
@@ -82,7 +81,6 @@ document.getElementById('message-submit').onclick = () => {
     }
   }
   chatContainer.append(displayMessage);
-  autoscrollChat();
 };
 
 Array.from(document.getElementsByClassName('emoji')).forEach((event) => {
