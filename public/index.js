@@ -83,6 +83,13 @@ document.getElementById('message-submit').onclick = () => {
   chatContainer.append(displayMessage);
 };
 
+document.getElementById('new-password').onclick = (event) => {
+  event.target.value = '';
+  document.getElementById('new-password').style.color = 'black';
+  document.getElementById('new-password').style.fontStyle = 'normal';
+  document.getElementById('new-password').onclick = null;
+};
+
 Array.from(document.getElementsByClassName('emoji')).forEach((event) => {
   event.addEventListener('click', (e) => {
     document.getElementById('message-input').value += e.currentTarget.innerText;

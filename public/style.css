@@ -13,11 +13,6 @@ html {
   src:url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 }
 
-#new-room-modal {
-  color: white;
-  display: none;
-}
-
 emoji-picker {
   display:inline-flex;
   grid-area: 4 / 2 / 5 / 3;
@@ -29,34 +24,36 @@ emoji-picker {
 
 #username-modal {
   display: inline;
+  line-height: 1.25;
   background-color: palegoldenrod;
-  font-family: 'Marck Script', cursive;
+  /* font-family: 'Marck Script', cursive; */
   font-size: 20px;
-  border-radius: 3px;
-  height: 180px;
-  width: 220px;
+  border: 1px solid #404040;
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
   top: 50%;
   left: 50%;
+  padding: 15px;
   position: fixed;
   z-index: 2;
 }
 
 #username-entry {
-  padding: 7px;
-  margin: 4px;
+  margin-bottom: 10px;
+  /* margin: 4px;
   width: 120px;
   height: 15px;
-  justify-self: center;
+  justify-self: center; */
 }
 
-#username-submit {
+/* #username-submit {
   margin: 4px;
   font-family: 'Marck Script', cursive;
-}
+} */
 
 #username-instruction {
   text-justify: center;
-  padding: 5px;
 }
 
 #video-container {
@@ -240,4 +237,13 @@ svg {
 #url-request {
   color: white;
   margin-left: 6px;
+}
+
+#new-password {
+  font-style: italic;
+  color: grey;
+}
+
+#password-entry {
+  margin-bottom: 10px;
 }
