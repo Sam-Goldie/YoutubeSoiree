@@ -18,14 +18,16 @@ emoji-picker {
   grid-area: 4 / 2 / 5 / 3;
   --num-columns: 6;
   background-color: firebrick;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
 }
 
 #username-modal {
-  display: inline;
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
   line-height: 1.25;
-  background-color: palegoldenrod;
+  background-color: #797;
   /* font-family: 'Marck Script', cursive; */
   font-size: 20px;
   border: 1px solid #404040;
@@ -40,20 +42,20 @@ emoji-picker {
 }
 
 #username-entry {
-  margin-bottom: 10px;
-  /* margin: 4px;
-  width: 120px;
-  height: 15px;
-  justify-self: center; */
+  width: 95%;
+  align-self: center;
+  align-content: center;
 }
 
-/* #username-submit {
-  margin: 4px;
-  font-family: 'Marck Script', cursive;
-} */
+#username-submit {
+  display: block;
+  align-content: center;
+  justify-content: center;
+  font-size: xx-large;
+}
 
 #username-instruction {
-  text-justify: center;
+  /* text-justify: center; */
 }
 
 #video-container {
@@ -242,8 +244,23 @@ svg {
 #new-password {
   font-style: italic;
   color: grey;
+  align-self: center;
+  width: 50%;
 }
 
 #password-entry {
   margin-bottom: 10px;
+  width: 95%;
+  display: block;
+}
+
+.signin-section {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+#password-instruction {
+  align-content: center;
 }
