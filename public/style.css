@@ -78,18 +78,17 @@ html {
 } */
 
 #chatbar {
-  margin-top: -0.3vw;
+  height: 95%;
+  padding-bottom: 40px;
   display: grid;
   grid-area: 5 / 2 / 6 / 3;
   grid-template-columns: 30px 200px 45px 50px;
 }
 
 #fullscreen-header {
-  margin-top: -5px;
+  margin-top: 0px;
   margin-left: 8px;
   display: inline-flex;
-  text-align: center;
-  text-justify: center;
   grid-area: 1 / 2 / 2 / 3;
   color: white;
   font-family: 'Marck Script', cursive;
@@ -127,7 +126,7 @@ html {
 }
 
 #message-input {
-  margin-left: 5px;
+  margin-left: 3px;
   grid-area: 1 / 2 / 2 / 3;
   border-radius: 2px;
   height: 24px;
@@ -251,7 +250,7 @@ svg {
 
 #url-request {
   color: white;
-  margin-left: 6px;
+  margin-left: 8px;
 }
 
 #new-password {
@@ -272,8 +271,4 @@ svg {
   padding: 10px;
   border: 1px solid black;
   border-radius: 3px;
-}
-
-#password-instruction {
-  align-content: center;
 }
