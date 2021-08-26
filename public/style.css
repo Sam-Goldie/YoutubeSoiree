@@ -62,7 +62,7 @@ html {
 #video-container {
   margin-bottom: 0px;
   display: grid;
-  grid-template-rows: 50px 50px auto 70px 25px;
+  grid-template-rows: 50px 55px auto 70px 25px;
   grid-template-columns: auto 275px;
   width: 90vw;
   height: 55vw;
@@ -103,13 +103,15 @@ html {
 #submit-input {
   margin-left: 6px;
   display: inline;
-  height: 25px;
+  height: 21px;
   margin-bottom: 6px;
 }
 
 #submit-box {
   grid-area: 2 / 2 / 3 / 3;
   height: 50px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 #video-player {
@@ -244,8 +246,7 @@ svg {
 
 #url-submit {
   position: relative;
-  height: 28px;
-  top: 5px;
+  top: 4.5px;
 }
 
 #url-request {
