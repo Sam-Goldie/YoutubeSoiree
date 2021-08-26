@@ -1,16 +1,23 @@
 import './socketConnect.js';
 import findColor from './findColor.js';
+import autoscrollChat from './autoscrollChat.js';
 
 let username;
 let userColor;
+let room;
+let password;
 
 document.getElementById('username-submit').onclick = () => {
   const newUsername = document.getElementById('username-entry').value;
+  const code = document.getElementById('password-entry').value;
   if (newUsername !== '') {
     username = newUsername;
-    document.getElementById('username-modal').style.display = 'none';
-    userColor = findColor(newUsername);
-    socket.emit('signin', newUsername);
+    userColor = findColor(username);
+    const usp = new URLSearchParams(document.location.search);
+    room = usp.get('id');
+    password = code;
+    console.log('this is room: ' + room);
+    socket.emit('signin', newUsername, room, code);
   }
 }
 
@@ -30,6 +37,11 @@ document.getElementById('url-submit').onclick = () => {
   socket.emit('url', newVideoId);
   player.loadVideoById(newVideoId);
 };
+
+document.getElementById('create-room').onclick = () => {
+  console.log('room created!');
+  socket.emit('room', document.getElementById('new-password').value);
+}
 
 document.getElementById('message-input').addEventListener('keyup', function(event) {
   if (event.key === 'Enter') {
@@ -70,6 +82,14 @@ document.getElementById('message-submit').onclick = () => {
     }
   }
   chatContainer.append(displayMessage);
+  autoscrollChat();
+};
+
+document.getElementById('new-password').onclick = (event) => {
+  event.target.value = '';
+  document.getElementById('new-password').style.color = 'black';
+  document.getElementById('new-password').style.fontStyle = 'normal';
+  document.getElementById('new-password').onclick = null;
 };
 
 Array.from(document.getElementsByClassName('emoji')).forEach((event) => {

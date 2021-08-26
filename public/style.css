@@ -13,62 +13,56 @@ html {
   src:url('https://fonts.googleapis.com/css2?family=Marck+Script&display=swap');
 }
 
-
-/* #app {
-  display: grid;
-  grid-template-rows: 80px 60px 60px minmax(360px, 720px);
-  grid-template-columns: 300px minmax(640px, 1280px) 150px;
-} */
-
-/* h1 {
-  grid-area: 1 / 1 / 2 / 2;
-} */
-
-emoji-picker {
+/* emoji-picker {
+  filter: blur(100);
   display:inline-flex;
   grid-area: 4 / 2 / 5 / 3;
   --num-columns: 6;
   background-color: firebrick;
   width: 100%;
   height: 100%;
-}
+} */
 
 #username-modal {
-  display: inline;
-  background-color: palegoldenrod;
-  font-family: 'Marck Script', cursive;
+  display: flex;
+  align-content: space-between;
+  flex-direction: column;
+  line-height: 1.25;
+  background-color: #797;
+  /* font-family: 'Marck Script', cursive; */
   font-size: 20px;
-  border-radius: 3px;
-  height: 180px;
-  width: 220px;
+  border: 1px solid #404040;
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
   top: 50%;
   left: 50%;
+  padding: 15px;
   position: fixed;
   z-index: 2;
 }
 
 #username-entry {
-  padding: 7px;
-  margin: 4px;
-  width: 120px;
-  height: 15px;
-  justify-self: center;
+  width: 95%;
+  align-self: center;
+  align-content: center;
 }
 
 #username-submit {
-  margin: 4px;
-  font-family: 'Marck Script', cursive;
+  display: block;
+  align-content: center;
+  justify-content: center;
+  font-size: xx-large;
 }
 
 #username-instruction {
-  text-justify: center;
-  padding: 5px;
+  /* text-justify: center; */
 }
 
 #video-container {
   margin-bottom: 0px;
   display: grid;
-  grid-template-rows: 50px 50px auto 70px 25px;
+  grid-template-rows: 50px 55px auto 70px 25px;
   grid-template-columns: auto 275px;
   width: 90vw;
   height: 55vw;
@@ -108,13 +102,15 @@ emoji-picker {
 #submit-input {
   margin-left: 6px;
   display: inline;
-  height: 25px;
+  height: 21px;
   margin-bottom: 6px;
 }
 
 #submit-box {
   grid-area: 2 / 2 / 3 / 3;
   height: 50px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 #video-player {
@@ -159,19 +155,29 @@ emoji-picker {
 }
 
 #emoji-picker {
-  background-color: rgb(30, 30, 30);
+  background-color: black;
+  padding: 3px;
   font-size: 18px;
-  border: 1px rgb(50, 50, 50) ridge;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   grid-area: 4 / 2 / 5 / 3;
   width: 100%;
-  height: 100%;
+  height: 80%;
   overflow-y: scroll;
   border-radius: 3px;
 }
 
 #emoji-picker:hover {
   cursor: pointer;
+}
+
+#emoji-picker::selection {
+  color: none;
+  background: none;
+}
+
+.emoji::selection {
+  color: none;
+  background: none;
 }
 
 .message {
@@ -226,7 +232,7 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #191919;
+  background: #353535;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -239,8 +245,7 @@ svg {
 
 #url-submit {
   position: relative;
-  height: 28px;
-  top: 5px;
+  top: 4.5px;
 }
 
 #url-request {
@@ -248,7 +253,22 @@ svg {
   margin-left: 8px;
 }
 
+#new-password {
+  font-style: italic;
+  color: grey;
+  align-self: center;
+  width: 50%;
+}
 
-/* #video-container:fullscreen #video-player {
+#password-entry {
+  margin-bottom: 10px;
+  width: 95%;
+  display: block;
+}
 
-} */
+.signin-section {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+}

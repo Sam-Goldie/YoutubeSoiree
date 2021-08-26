@@ -9,17 +9,32 @@
   </head>
   <body>
     <div id='username-modal'>
-      <div id='username-instruction'>Welcome, honored guest! Your name?</div>
-      <input id='username-entry' type='text' />
-      <button id='username-submit' type='submit'>Submit</button>
+      <div class='signin-section'>
+        <div id='username-instruction'>Welcome, honored guest! Your name?</div>
+        <input autocomplete='off' id='username-entry' type='text' />
+        <div id='password-instruction'>And the password?</div>
+        <input autocomplete='off' id='password-entry' type='text'/>
+        <button id='username-submit' type='submit'>Enter the ballroom</button>
+      </div>
+      <div class='signin-section'>
+        <div>...or shall I set aside a new room?</div>
+        <input autocomplete='off' id='new-password' value='Set the room password' type='text'/>
+        <button id='create-room'>Create Room</button>
+      </div>
     </div>
+    <!-- <div id='new-room-modal'>
+      <div>Please copy your link!</div>
+      <div id='link-display'></div>
+      <div>And don't forget your password!</div>
+      <div id='password-display'></div>
+    </div> -->
     <div id='app'>
       <!-- <h1 id='title'>Youtube Soiree</h1> -->
       <div id='video-container'>
         <h1 id="fullscreen-header">Youtube Soiree</h1>
         <div id='submit-box'>
           <div id="url-request">What shall we watch?</div>
-          <input id="submit-input" type="text" />
+          <input autocomplete='off' id="submit-input" type="text" />
           <button id="url-submit" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 1 25 20"><path d="M16 7.328v-3.328l8 8-8 8v-3.328l-16-4.672z"/></svg>
           </button>
@@ -36,7 +51,7 @@
               <path d="M 12,20 10,20 10,26 l 6,0 0,-2 -3,1 0,-4 0,0 z"></path>
             </svg>
           </button>
-          <input id="message-input" />
+          <input autocomplete='off' id="message-input" />
           <button id="message-submit" type="submit">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="2 1 25 20"><path d="M16 7.328v-3.328l8 8-8 8v-3.328l-16-4.672z"/></svg>
           </button>

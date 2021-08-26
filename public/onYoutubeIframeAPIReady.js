@@ -43,7 +43,6 @@ function onPlayerReady(event) {
       }).catch(function(err) {
         console.log(err);
       })
-      // document.getElementById('fullscreen-header').style.display = 'inline';
     } else {
       document.exitFullscreen().then(function(err) {
         if (err) {
@@ -53,17 +52,14 @@ function onPlayerReady(event) {
       }).catch(function(err) {
         console.log(err);
       })
-      // document.getElementById('fullscreen-header').style.display = 'none';
     }
   });
 }
 
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.PLAYING) {
-    // console.log('player now playing');
     socket.emit('play', player.getCurrentTime());
   } else if (event.data === YT.PlayerState.PAUSED) {
-    // console.log('player now paused');
     socket.emit('pause', player.getCurrentTime());
   }
 }
