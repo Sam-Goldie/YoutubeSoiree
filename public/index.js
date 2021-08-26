@@ -1,5 +1,6 @@
 import './socketConnect.js';
 import findColor from './findColor.js';
+import autoscrollChat from './autoscrollChat.js';
 
 let username;
 let userColor;
@@ -81,6 +82,14 @@ document.getElementById('message-submit').onclick = () => {
     }
   }
   chatContainer.append(displayMessage);
+  autoscrollChat();
+};
+
+document.getElementById('new-password').onclick = (event) => {
+  event.target.value = '';
+  document.getElementById('new-password').style.color = 'black';
+  document.getElementById('new-password').style.fontStyle = 'normal';
+  document.getElementById('new-password').onclick = null;
 };
 
 Array.from(document.getElementsByClassName('emoji')).forEach((event) => {

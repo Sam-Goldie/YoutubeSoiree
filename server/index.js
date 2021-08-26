@@ -23,13 +23,17 @@ const idMaker = () => {
   return id;
 }
 
+const dudFunction = () => {
+  return;
+};
+
 const populateEmojiPicker = (emojis) => {
   let htmlContent = fs.readFileSync('indexTemplate.html', 'utf-8');
   let emojiDivs = '';
   for (let emoji of emojis) {
     emojiDivs += `\n<div class="emoji">${emoji}</div>`
   }
-  htmlContent = htmlContent.replace("<div id='emoji-picker'></div>", `<div id='emoji-picker'>${emojiDivs}</div>`);
+  htmlContent = htmlContent.replace(`<div id='emoji-picker'></div>`, `<div id='emoji-picker'>${emojiDivs}</div>`);
   fs.writeFileSync('./public/index.html', htmlContent, 'utf-8');
 };
 
@@ -87,3 +91,5 @@ io.on('connection', (socket) => {
     console.log('number of rooms is: ' + Array.from(Object.entries(rooms)));
   })
 });
+
+module.exports = idMaker;
